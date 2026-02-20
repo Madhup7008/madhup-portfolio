@@ -1,160 +1,175 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, GraduationCap, MapPin, Award } from "lucide-react";
+import { MapPin, Code2, Award, Terminal, BookOpen, Cpu } from "lucide-react";
+
+const cards = [
+    {
+        tag: "/ Philosophy",
+        title: "Engineering Experiences",
+        body: "Delivering high-fidelity user interfaces powered by scalable architectures. My mission: build digital artifacts as robust as they're beautiful.",
+        icon: Code2,
+    },
+    {
+        tag: "/ Focus",
+        title: "Current Specialization",
+        body: "Frontend engineering with React, Next.js, and modern 3D web. Exploring the intersection of visual storytelling and systems design.",
+        icon: Cpu,
+    },
+    {
+        tag: "/ Education",
+        title: "B.Tech IT · Amity University",
+        body: "Immersed in CS fundamentals, data structures, algorithms, and software engineering methodologies at Amity University, Noida.",
+        icon: BookOpen,
+    },
+];
 
 export default function About() {
     return (
-        <section id="about" className="relative py-60 px-6 overflow-hidden bg-zinc-950">
-            {/* Ambient Background Elements */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[160px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-white/[0.01] rounded-full blur-[140px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+        <section id="about" className="relative py-40 px-6 overflow-hidden bg-[var(--bg-secondary)]">
+            {/* Ambient blobs */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[rgba(0,255,135,0.04)] rounded-full blur-[160px] -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[rgba(0,212,255,0.03)] rounded-full blur-[140px] translate-y-1/3 -translate-x-1/3 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto">
-                {/* Massive Architectural Header */}
+                {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-40 relative"
+                    transition={{ duration: 0.9, ease: "easeOut" }}
+                    className="mb-24 relative"
                 >
-                    <h2 className="text-[12vw] md:text-[200px] font-black text-outline tracking-tighter leading-none mb-4 absolute -top-40 -left-10 opacity-5 select-none uppercase">
-                        STORY
+                    <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-[#00ff87] opacity-70 block mb-4">_about.me</span>
+                    <h2 className="font-display text-7xl md:text-[200px] tracking-wide leading-none select-none opacity-10 absolute -top-10 -left-8">
+                        ABOUT
                     </h2>
-                    <div className="relative z-10">
-                        <h3 className="text-8xl md:text-[140px] font-black text-white tracking-tighter leading-none">
-                            ABOUT<span className="text-outline">.</span>
+                    <div className="relative z-10 pt-4">
+                        <h3 className="font-display text-6xl md:text-[110px] tracking-wide leading-none">
+                            THE<span className="text-gradient"> HUMAN</span>
                         </h3>
-                        <div className="flex items-center gap-6 mt-8">
-                            <div className="h-[2px] w-24 bg-white/20"></div>
-                            <p className="text-xl md:text-2xl text-white/40 font-black uppercase tracking-[0.4em] italic leading-none">Engineering Experiences</p>
+                        <div className="flex items-center gap-4 mt-5">
+                            <div className="h-[1px] w-20 bg-[#00ff87] opacity-50" />
+                            <p className="font-mono text-sm text-[var(--text-muted)] uppercase tracking-[0.3em]">Engineering Experiences</p>
                         </div>
                     </div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
-                    {/* Left Side - Professional Portrait */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                    {/* Portrait Column */}
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                        className="lg:col-span-5 relative group"
+                        transition={{ duration: 0.9, ease: "easeOut" }}
+                        className="lg:col-span-4 relative group"
                     >
-                        {/* Portrait Container with Glow */}
                         <div className="relative">
-                            {/* Glow Effect Background */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-transparent rounded-[60px] blur-3xl group-hover:blur-[100px] transition-all duration-1000 opacity-0 group-hover:opacity-100"></div>
+                            {/* Glow ring */}
+                            <div className="absolute -inset-3 rounded-[45px] bg-gradient-to-br from-[rgba(0,255,135,0.15)] to-[rgba(0,212,255,0.08)] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-                            {/* Image Container */}
-                            <div className="relative overflow-hidden rounded-[60px] border border-white/10 group-hover:border-white/20 transition-all duration-700 shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
+                            <div className="relative rounded-[40px] overflow-hidden border border-[var(--border-subtle)] group-hover:border-[var(--border-medium)] transition-all duration-500 shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
                                 <motion.img
-                                    whileHover={{ scale: 1.05 }}
+                                    whileHover={{ scale: 1.04 }}
                                     transition={{ duration: 0.7, ease: "easeOut" }}
                                     src="/images/profile.jpg"
-                                    alt="Madhup Kumar Yadav - Full Stack Developer"
+                                    alt="Madhup Kumar Yadav"
                                     className="w-full h-auto object-cover"
                                 />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#080c10]/60 to-transparent" />
 
-                                {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700"></div>
-
-                                {/* Info Badge */}
+                                {/* Info badge */}
                                 <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.3 }}
-                                    className="absolute bottom-8 left-8 right-8 p-6 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-3xl"
+                                    className="absolute bottom-6 left-6 right-6 p-5 bg-[rgba(8,12,16,0.85)] backdrop-blur-2xl border border-[var(--border-subtle)] rounded-2xl"
                                 >
-                                    <h4 className="text-2xl font-black text-white mb-2">Madhup Kumar Yadav</h4>
-                                    <p className="text-white/60 text-sm font-bold uppercase tracking-widest">Full Stack Developer</p>
-                                    <div className="flex items-center gap-2 mt-3">
-                                        <MapPin className="w-4 h-4 text-white/40" />
-                                        <span className="text-white/40 text-xs font-bold">India</span>
+                                    <h4 className="text-base font-bold text-[var(--text-primary)] mb-1">Madhup Kumar Yadav</h4>
+                                    <p className="font-mono text-[10px] text-[#00ff87] uppercase tracking-widest mb-3 opacity-80">Full Stack Developer</p>
+                                    <div className="flex items-center gap-1.5">
+                                        <MapPin className="w-3 h-3 text-[var(--text-muted)]" />
+                                        <span className="font-mono text-[10px] text-[var(--text-muted)] tracking-wider">India · UTC+5:30</span>
                                     </div>
                                 </motion.div>
                             </div>
                         </div>
                     </motion.div>
 
-                    {/* Right Side - The Persona */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="lg:col-span-7 relative group p-14 bg-white/[0.02] border border-white/5 rounded-[60px] shadow-2xl backdrop-blur-3xl overflow-hidden"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-50"></div>
-
-                        <div className="relative z-10">
-                            <div className="w-20 h-20 bg-white text-black rounded-3xl flex items-center justify-center mb-10 shadow-[0_20px_40px_rgba(255,255,255,0.1)]">
-                                <Award className="w-10 h-10" />
-                            </div>
-
-                            <h3 className="text-5xl font-black mb-8 tracking-tighter leading-tight text-white">
-                                Madhup Kumar <br />Yadav
-                            </h3>
-
-                            <p className="text-2xl text-white/40 font-medium leading-relaxed mb-12 tracking-tight">
-                                Pursuing <span className="text-white font-bold">B.Tech in IT</span> at Amity University, Noida. Bridging the gap between <span className="text-white italic">logic</span> and <span className="text-white italic">aesthetics</span>.
-                            </p>
-
-                            <div className="flex flex-col gap-6 mb-16">
-                                <div className="flex items-center gap-5 text-white/30 group/item">
-                                    <div className="p-4 bg-white/5 rounded-2xl group-hover/item:bg-white/10 transition-colors">
-                                        <MapPin className="w-5 h-5" />
+                    {/* Info columns */}
+                    <div className="lg:col-span-8 flex flex-col gap-10">
+                        {/* Main bio */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.9, ease: "easeOut" }}
+                            className="glass-card rounded-[30px] p-10 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-48 h-48 bg-[rgba(0,255,135,0.04)] rounded-full blur-3xl pointer-events-none" />
+                            <div className="relative z-10">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-10 h-10 rounded-xl bg-[rgba(0,255,135,0.1)] flex items-center justify-center">
+                                        <Award className="w-5 h-5 text-[#00ff87]" />
                                     </div>
-                                    <span className="text-xs font-black uppercase tracking-[0.3em]">Noida, India // UTC+5:30</span>
+                                    <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--text-muted)]">Madhup Kumar Yadav</span>
+                                </div>
+                                <p className="text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed font-normal">
+                                    Pursuing <span className="text-[var(--text-primary)] font-semibold">B.Tech in IT</span> at Amity University, Noida. I bridge the gap between
+                                    <span className="text-[#00ff87] font-semibold"> logic</span> and{" "}
+                                    <span className="text-[#00d4ff] font-semibold">aesthetics</span>, building software that performs and inspires.
+                                </p>
+                                <div className="mt-8 flex flex-wrap gap-3">
+                                    {["Python", "React", "Next.js", "Flask", "PostgreSQL", "TypeScript"].map((t) => (
+                                        <span key={t} className="font-mono text-[10px] px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] text-[var(--text-muted)] tracking-wider uppercase hover:border-[#00ff87] hover:text-[#00ff87] transition-colors">
+                                            {t}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
+                        </motion.div>
 
+                        {/* Cards Grid */}
+                        <div className="grid md:grid-cols-3 gap-6">
+                            {cards.map((card, i) => {
+                                const Icon = card.icon;
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1, duration: 0.7, ease: "easeOut" }}
+                                        className="glass-card rounded-[24px] p-7 flex flex-col gap-4 group"
+                                    >
+                                        <div className="w-9 h-9 rounded-lg bg-[rgba(0,255,135,0.08)] flex items-center justify-center group-hover:bg-[rgba(0,255,135,0.15)] transition-colors">
+                                            <Icon className="w-4 h-4 text-[#00ff87]" />
+                                        </div>
+                                        <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[var(--text-muted)]">{card.tag}</span>
+                                        <h4 className="text-base font-bold leading-tight text-[var(--text-primary)] mb-0.5">{card.title}</h4>
+                                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{card.body}</p>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* CTA */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                        >
                             <a
                                 href="https://www.linkedin.com/in/madhup-kumar-yadav-641a85270/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group/btn relative inline-flex items-center gap-4 px-10 py-5 bg-white text-black rounded-full font-black uppercase tracking-[0.2em] text-[11px] overflow-hidden transition-all hover:scale-[1.05]"
+                                className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm"
                             >
-                                <span className="relative z-10 flex items-center gap-3">
-                                    Connect on Auth <ExternalLink className="w-4 h-4" />
-                                </span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
+                                <Terminal className="w-4 h-4" />
+                                Connect on LinkedIn
                             </a>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Side - The Narrative (Span 7) */}
-                    <div className="lg:col-span-7 flex flex-col gap-24 pt-10">
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="flex flex-col gap-8"
-                        >
-                            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/20 border-l border-white/10 pl-4">/ Philosophy</span>
-                            <p className="text-3xl md:text-4xl text-white/60 font-medium leading-[1.4] tracking-tight">
-                                Delivering <span className="text-white">high-fidelity</span> user interfaces powered by <span className="text-white">scalable architectures</span>. My mission is to build digital artifacts that are as robust as they're beautiful.
-                            </p>
                         </motion.div>
-
-                        <div className="grid md:grid-cols-2 gap-16">
-                            {[
-                                { title: "Specialization", content: "Frontend engineering with a focus on React, Next.js, and modern CSS architectures." },
-                                { title: "Current Focus", content: "Exploring the intersections of 3D web experiences and accessible interface design." }
-                            ].map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="p-10 border border-white/5 rounded-[40px] hover:bg-white/[0.01] transition-colors"
-                                >
-                                    <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20 mb-6">{item.title}</h4>
-                                    <p className="text-lg text-white/40 font-medium leading-relaxed">{item.content}</p>
-                                </motion.div>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </div>
