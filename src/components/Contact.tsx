@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Linkedin, Github, Twitter, Mail, Send, CheckCircle2, XCircle } from "lucide-react";
+import { Linkedin, Github, Twitter, Mail, Send, CheckCircle2, XCircle, MapPin, Clock, Shield, Lock } from "lucide-react";
 import { useState, useRef, FormEvent } from "react";
 import emailjs from '@emailjs/browser';
 
@@ -10,10 +10,6 @@ export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-
-    const EMAILJS_SERVICE_ID = 'service_n8dgnpk';
-    const EMAILJS_TEMPLATE_ID = 'template_5wc8yot';
-    const EMAILJS_PUBLIC_KEY = 'kU7Z7WGuhLZ8DjQad';
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,10 +21,10 @@ export default function Contact() {
         setIsSubmitting(true);
         try {
             await emailjs.send(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
                 { from_name: formData.name, from_email: formData.email, message: formData.message, to_email: 'madhupyadav1809@gmail.com' },
-                EMAILJS_PUBLIC_KEY
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
             );
             setSubmitStatus('success');
             setFormData({ name: '', email: '', message: '' });
@@ -45,8 +41,8 @@ export default function Contact() {
     return (
         <section id="contact" className="relative py-40 px-6 flex flex-col items-center justify-center overflow-hidden" style={{ background: "var(--bg-primary)" }}>
             {/* Ambient */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[rgba(0,255,135,0.04)] rounded-full blur-[200px] pointer-events-none" />
-            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(0,255,135,0.2)] to-transparent" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[rgba(255,0,64,0.04)] rounded-full blur-[200px] pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[rgba(255,0,64,0.2)] to-transparent" />
 
             <div className="max-w-5xl w-full relative z-10 flex flex-col items-center">
                 {/* Header */}
@@ -57,27 +53,28 @@ export default function Contact() {
                     transition={{ duration: 0.9, ease: "easeOut" }}
                     className="text-center mb-20"
                 >
-                    <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-[#00ff87] opacity-70 block mb-6">_say.hello</span>
+                    <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-[#ff0040] opacity-70 block mb-6">_secure.channel</span>
                     <h2
                         className="font-display text-[12vw] md:text-[8rem] lg:text-[10rem] tracking-wide leading-none mb-8 select-none"
                     >
-                        LET&apos;S{" "}
+                        INITIATE{" "}
                         <span
                             style={{
-                                background: "linear-gradient(135deg, #00ff87, #00d4ff)",
+                                background: "linear-gradient(135deg, #ff0040, #ff2d2d)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                                 backgroundClip: "text",
                             }}
                         >
-                            BUILD
+                            CONTACT
                         </span>
                         <br />
-                        SOMETHING<span style={{ color: "transparent", WebkitTextStroke: "1.5px rgba(0,255,135,0.25)" }}>.</span>
+                        PROTOCOL<span style={{ color: "transparent", WebkitTextStroke: "1.5px rgba(255,0,64,0.25)" }}>.</span>
                     </h2>
                     <p className="text-lg md:text-xl font-light text-[var(--text-secondary)] tracking-tight max-w-2xl mx-auto">
-                        Currently available for{" "}
-                        <span className="text-[var(--text-primary)] italic font-semibold">select freelance</span> opportunities &amp; high-impact full-time roles.
+                        Encrypted channel open. Currently accepting{" "}
+                        <span className="text-[var(--text-primary)] italic font-semibold">security consulting</span>,{" "}
+                        <span className="text-[var(--text-primary)] italic font-semibold">freelance development</span> &amp; full-time opportunities.
                     </p>
                 </motion.div>
 
@@ -92,8 +89,8 @@ export default function Contact() {
                                 viewport={{ once: true }}
                                 className="relative group flex flex-col gap-2"
                             >
-                                <label htmlFor="name" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)] group-focus-within:text-[#00ff87] transition-colors">
-                                    / Initials · Name
+                                <label htmlFor="name" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)] group-focus-within:text-[#ff0040] transition-colors">
+                                    / Identity · Callsign
                                 </label>
                                 <input
                                     type="text"
@@ -103,10 +100,10 @@ export default function Contact() {
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     placeholder="Your Name"
                                     required
-                                    className="w-full bg-[rgba(0,255,135,0.03)] border border-[var(--border-subtle)] focus:border-[rgba(0,255,135,0.4)] rounded-xl px-5 py-4 text-lg font-semibold text-[var(--text-primary)] outline-none transition-all duration-500 placeholder:text-[var(--text-muted)]"
+                                    className="w-full bg-[rgba(255,0,64,0.03)] border border-[var(--border-subtle)] focus:border-[rgba(255,0,64,0.4)] rounded-xl px-5 py-4 text-lg font-semibold text-[var(--text-primary)] outline-none transition-all duration-500 placeholder:text-[var(--text-muted)]"
                                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                                 />
-                                <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#00ff87] transition-all duration-700 group-focus-within:w-full rounded-full" />
+                                <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#ff0040] transition-all duration-700 group-focus-within:w-full rounded-full" />
                             </motion.div>
 
                             {/* Email */}
@@ -116,8 +113,8 @@ export default function Contact() {
                                 viewport={{ once: true }}
                                 className="relative group flex flex-col gap-2"
                             >
-                                <label htmlFor="email" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)] group-focus-within:text-[#00ff87] transition-colors">
-                                    / Digital Address
+                                <label htmlFor="email" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)] group-focus-within:text-[#ff0040] transition-colors">
+                                    / Secure Address
                                 </label>
                                 <input
                                     type="email"
@@ -127,7 +124,7 @@ export default function Contact() {
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     placeholder="your@email.com"
                                     required
-                                    className="w-full bg-[rgba(0,255,135,0.03)] border border-[var(--border-subtle)] focus:border-[rgba(0,255,135,0.4)] rounded-xl px-5 py-4 text-lg font-semibold text-[var(--text-primary)] outline-none transition-all duration-500 placeholder:text-[var(--text-muted)]"
+                                    className="w-full bg-[rgba(255,0,64,0.03)] border border-[var(--border-subtle)] focus:border-[rgba(255,0,64,0.4)] rounded-xl px-5 py-4 text-lg font-semibold text-[var(--text-primary)] outline-none transition-all duration-500 placeholder:text-[var(--text-muted)]"
                                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                                 />
                             </motion.div>
@@ -141,7 +138,7 @@ export default function Contact() {
                             className="flex flex-col gap-2"
                         >
                             <label htmlFor="message" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)]">
-                                / The Vision
+                                / Encrypted Payload
                             </label>
                             <textarea
                                 rows={5}
@@ -149,9 +146,9 @@ export default function Contact() {
                                 name="message"
                                 value={formData.message}
                                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                placeholder="Tell me about your project..."
+                                placeholder="Describe your mission — security audit, development project, or collaboration..."
                                 required
-                                className="w-full bg-[rgba(0,255,135,0.03)] border border-[var(--border-subtle)] focus:border-[rgba(0,255,135,0.4)] rounded-xl px-5 py-4 text-lg font-medium text-[var(--text-primary)] outline-none transition-all duration-500 placeholder:text-[var(--text-muted)] resize-none"
+                                className="w-full bg-[rgba(255,0,64,0.03)] border border-[var(--border-subtle)] focus:border-[rgba(255,0,64,0.4)] rounded-xl px-5 py-4 text-lg font-medium text-[var(--text-primary)] outline-none transition-all duration-500 placeholder:text-[var(--text-muted)] resize-none"
                                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                             />
                         </motion.div>
@@ -172,14 +169,14 @@ export default function Contact() {
                                     <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}>
                                         <Send className="w-4 h-4" />
                                     </motion.div>
-                                    Deploying...
+                                    Encrypting...
                                 </>
                             ) : submitStatus === 'success' ? (
-                                <><CheckCircle2 className="w-4 h-4" /> Deployed!</>
+                                <><CheckCircle2 className="w-4 h-4" /> Transmitted!</>
                             ) : submitStatus === 'error' ? (
                                 <><XCircle className="w-4 h-4" /> Failed</>
                             ) : (
-                                <><Send className="w-4 h-4" /> Deploy Message</>
+                                <><Send className="w-4 h-4" /> Transmit Securely</>
                             )}
                         </motion.button>
                     </form>
@@ -190,7 +187,7 @@ export default function Contact() {
                             animate={{ opacity: 1, y: 0 }}
                             className="mt-8 p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl"
                         >
-                            <p className="font-mono text-sm text-emerald-400">✓ Message deployed successfully. I&apos;ll respond soon.</p>
+                            <p className="font-mono text-sm text-emerald-400">✓ Message encrypted & transmitted. Expect a response within 24hrs.</p>
                         </motion.div>
                     )}
                     {submitStatus === 'error' && (
@@ -199,7 +196,7 @@ export default function Contact() {
                             animate={{ opacity: 1, y: 0 }}
                             className="mt-8 p-6 bg-red-500/10 border border-red-500/20 rounded-2xl"
                         >
-                            <p className="font-mono text-sm text-red-400">✗ Transmission failed. Try emailing directly.</p>
+                            <p className="font-mono text-sm text-red-400">✗ Secure channel error. Fallback to direct email.</p>
                         </motion.div>
                     )}
                 </div>
@@ -209,25 +206,59 @@ export default function Contact() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mt-20 flex flex-wrap justify-center gap-6 w-full"
+                    className="mt-16 w-full"
                 >
-                    {[
-                        { name: "LinkedIn", href: "https://www.linkedin.com/in/madhup-kumar-yadav-641a85270/", icon: Linkedin },
-                        { name: "GitHub", href: "https://github.com/Madhup7008", icon: Github },
-                        { name: "Twitter", href: "#", icon: Twitter },
-                        { name: "Email", href: "mailto:madhupyadav1809@gmail.com", icon: Mail },
-                    ].map((item, i) => (
-                        <a
-                            key={i}
-                            href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-3 px-6 py-3.5 glass-card border border-[var(--border-subtle)] hover:border-[var(--border-medium)] rounded-xl group transition-all duration-300"
-                        >
-                            <item.icon className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[#00ff87] transition-colors" />
-                            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] group-hover:text-[#00ff87] transition-colors">{item.name}</span>
-                        </a>
-                    ))}
+                    {/* Quick info cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                        <div className="glass-card rounded-2xl p-5 flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-[rgba(255,0,64,0.08)] flex items-center justify-center flex-shrink-0">
+                                <Lock className="w-5 h-5 text-[#ff0040]" />
+                            </div>
+                            <div>
+                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Encrypted Email</span>
+                                <span className="text-sm text-[var(--text-primary)]">madhupyadav1809@gmail.com</span>
+                            </div>
+                        </div>
+                        <div className="glass-card rounded-2xl p-5 flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-[rgba(255,0,64,0.08)] flex items-center justify-center flex-shrink-0">
+                                <Shield className="w-5 h-5 text-[#ff0040]" />
+                            </div>
+                            <div>
+                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Channel Status</span>
+                                <span className="text-sm text-[#ff0040]">Secure · TLS 1.3</span>
+                            </div>
+                        </div>
+                        <div className="glass-card rounded-2xl p-5 flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-[rgba(255,0,64,0.08)] flex items-center justify-center flex-shrink-0">
+                                <Clock className="w-5 h-5 text-[#ff0040]" />
+                            </div>
+                            <div>
+                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Response Time</span>
+                                <span className="text-sm text-[var(--text-primary)]">Within 24 hours</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Social buttons */}
+                    <div className="flex flex-wrap justify-center gap-4">
+                        {[
+                            { name: "LinkedIn", href: "https://www.linkedin.com/in/madhup-kumar-yadav-641a85270/", icon: Linkedin },
+                            { name: "GitHub", href: "https://github.com/Madhup7008", icon: Github },
+                            { name: "Twitter", href: "#", icon: Twitter },
+                            { name: "Email", href: "mailto:madhupyadav1809@gmail.com", icon: Mail },
+                        ].map((item, i) => (
+                            <a
+                                key={i}
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-3 px-6 py-3.5 glass-card border border-[var(--border-subtle)] hover:border-[var(--border-medium)] rounded-xl group transition-all duration-300"
+                            >
+                                <item.icon className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[#ff0040] transition-colors" />
+                                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--text-muted)] group-hover:text-[#ff0040] transition-colors">{item.name}</span>
+                            </a>
+                        ))}
+                    </div>
                 </motion.div>
             </div>
         </section>

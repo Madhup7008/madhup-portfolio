@@ -1,43 +1,56 @@
 export const portfolioData = {
   personal: {
     name: "Madhup Kumar Yadav",
-    title: "Full Stack Developer",
-    email: "contact@madhup.dev", // Placeholder, will update if user provides
-    location: "India", // inferred from timezone/name context, generic
-    bio: "I don't just write code; I architect digital ecosystems. With a passion for scalable backend logic and immersive frontend experiences, I transform abstract ideas into powerful, user-centric web applications.",
+    title: "Security Engineer & Full Stack Developer",
+    email: "madhupyadav1809@gmail.com",
+    location: "India",
+    bio: "I don't just write code; I fortify digital ecosystems. With a passion for cybersecurity and full stack development, I build secure, high-performance applications and hunt vulnerabilities before they become threats.",
     socials: {
       github: "https://github.com/Madhup7008",
       linkedin: "https://www.linkedin.com/in/madhup-kumar-yadav-641a85270/",
-      twitter: "#", // Placeholder
+      twitter: "#",
     },
   },
   skills: [
-    { name: "Python", category: "Backend", level: 90 },
-    { name: "React", category: "Frontend", level: 85 },
+    { name: "React / Next.js", category: "Frontend", level: 92 },
+    { name: "Python", category: "Backend", level: 88 },
+    { name: "Network Security", category: "Security", level: 82 },
+    { name: "Penetration Testing", category: "Security", level: 78 },
+    { name: "TypeScript", category: "Language", level: 78 },
     { name: "JavaScript", category: "Language", level: 90 },
-    { name: "HTML & CSS", category: "Frontend", level: 95 },
-    { name: "SQL", category: "Database", level: 80 },
-    { name: "APIs", category: "Backend", level: 85 },
-    { name: "Flask", category: "Backend", level: 80 },
+    { name: "Flask", category: "Backend", level: 85 },
     { name: "PostgreSQL", category: "Database", level: 80 },
+    { name: "OWASP Top 10", category: "Security", level: 85 },
+    { name: "Linux / Kali", category: "Security", level: 80 },
+    { name: "Tailwind CSS", category: "Frontend", level: 95 },
+    { name: "Git / GitHub", category: "Workflow", level: 90 },
+    { name: "Wireshark", category: "Security", level: 72 },
+    { name: "Burp Suite", category: "Security", level: 70 },
   ],
   projects: [
     {
-      title: "Astha Library & Fitness System",
-      description: "A comprehensive institutional management platform unifying library operations, fee management, and online examinations.",
-      tech: ["Python", "Flask", "PostgreSQL", "HTML/CSS"],
-      link: "#", // Placeholder
-      github: "#", // Placeholder
-      image: "/placeholder-project.png" // We will generate this or use a gradient div
+      title: "Astha Library & Fitness ERP",
+      description: "A comprehensive institutional management platform with secure authentication, role-based access control, encrypted data storage, and audit logging — serving 127+ active members.",
+      tech: ["Python", "Flask", "PostgreSQL", "React", "JWT Auth"],
+      link: "https://www.asthalibraryfitness.com/",
+      github: "https://github.com/Madhup7008",
+      image: "/astha-admin-main.png",
     },
-    // Adding a second placeholder project to fill the grid
     {
-      title: "Portfolio v1",
-      description: "A high-performance, creative portfolio website built with Next.js and Tailwind CSS to showcase my full-stack journey.",
-      tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+      title: "Portfolio Dashboard",
+      description: "A cybersecurity-themed developer showcase built with Next.js and Framer Motion featuring matrix code rain, encrypted contact forms, and terminal-inspired design.",
+      tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
       link: "#",
       github: "https://github.com/Madhup7008",
-      image: "/placeholder-portfolio.png"
-    }
-  ]
+      image: "/portfolio-preview.svg",
+    },
+    {
+      title: "Hometech Solutions",
+      description: "A full-scale e-commerce platform with secure JWT auth, input sanitization, rate-limited APIs, Redis caching, and HTTPS-enforced payment processing.",
+      tech: ["Next.js", "Express.js", "MongoDB", "Redis", "Razorpay"],
+      link: "#",
+      github: "https://github.com/Madhup7008",
+      image: "/hometech-preview.jpeg",
+    },
+  ],
 };

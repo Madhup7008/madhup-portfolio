@@ -1,41 +1,163 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
-import Background3D from "./Background3D";
+import { motion } from "framer-motion";
+import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 
-const ROLES = ["Full Stack Developer", "Systems Architect", "UI Craftsman", "Open Source Builder"];
+const ROLES = ["Full Stack Developer", "Cybersecurity Analyst", "Security Engineer", "Penetration Tester"];
+
+/* ═══════════════════════════════════════════════════════════════
+   MATRIX CODE RAIN — Canvas-based vertical streaming
+   ═══════════════════════════════════════════════════════════════ */
+
+const CODE_CHARS = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]<>/\\|=+-*&^%$#@!?;:0123456789";
+const TECH_WORDS = [
+    "Python", "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Flask",
+    "Nmap", "Burp Suite", "Metasploit", "Wireshark", "Hydra", "SQLMap", "Hashcat",
+    "192.168.1.1", "10.0.0.1", "127.0.0.1", "0.0.0.0:443", "8.8.8.8", "::1",
+    "XSS", "CSRF", "SQLi", "RCE", "LFI", "SSRF", "CVE-2024", "0day",
+    "AES-256", "SHA-512", "RSA-4096", "TLS 1.3", "JWT", "TCP/IP",
+    "$ nmap -sV", "ssh root@", "curl -X POST", "SELECT *", "chmod 777",
+    "netstat -tulpn", "iptables -L", "tcpdump", ":22", ":443", ":8080",
+    "Kali Linux", "OWASP", "Firewall", "IDS/IPS", "Payload", "Shellcode",
+    "C++", "Rust", "Go", "Bash", "Java", "DNS", "HTTP/3", "GraphQL",
+    "Gobuster", "Nikto", "Aircrack", "Dirb", "Bug Bounty", "CTF",
+    "import os", "def exploit():", "class Scanner:", "async fetch()",
+    "const payload =", "return shell;", "exec(cmd)", "socket.connect()",
+];
+
+function MatrixRain() {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const animRef = useRef<number>(0);
+
+    const initRain = useCallback(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        resize();
+        window.addEventListener("resize", resize);
+
+        const fontSize = 14;
+        const cols = Math.floor(canvas.width / fontSize);
+        const drops: number[] = new Array(cols).fill(0).map(() => Math.random() * -100);
+        const speeds: number[] = new Array(cols).fill(0).map(() => 0.08 + Math.random() * 0.22);
+        const brightCols = new Set<number>();
+        // Randomly pick ~15% of columns to be brighter (featured)
+        for (let i = 0; i < cols; i++) {
+            if (Math.random() < 0.15) brightCols.add(i);
+        }
+
+        // Floating tech-word overlays
+        const floaters: { text: string; x: number; y: number; speed: number; opacity: number }[] = [];
+        for (let i = 0; i < 30; i++) {
+            floaters.push({
+                text: TECH_WORDS[Math.floor(Math.random() * TECH_WORDS.length)],
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                speed: 0.08 + Math.random() * 0.2,
+                opacity: 0.06 + Math.random() * 0.12,
+            });
+        }
+
+        const draw = () => {
+            // Fade trail effect
+            ctx.fillStyle = "rgba(5, 5, 5, 0.06)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.font = `${fontSize}px 'JetBrains Mono', monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                if (brightCols.has(i)) {
+                    // Bright red column — head character is white, body is red
+                    const headY = y;
+                    // Head glow
+                    ctx.shadowColor = "#ff0040";
+                    ctx.shadowBlur = 8;
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillText(char, x, headY);
+                    ctx.shadowBlur = 0;
+
+                    // Trail chars in varying red
+                    for (let t = 1; t < 6; t++) {
+                        const trailOpacity = Math.max(0.05, 0.4 - t * 0.07);
+                        ctx.fillStyle = `rgba(255, 0, 64, ${trailOpacity})`;
+                        const tc = CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+                        ctx.fillText(tc, x, headY - t * fontSize);
+                    }
+                } else {
+                    // Normal dim columns
+                    const opacity = 0.03 + Math.random() * 0.08;
+                    ctx.fillStyle = `rgba(255, 0, 64, ${opacity})`;
+                    ctx.fillText(char, x, y);
+                }
+
+                drops[i] += speeds[i];
+                if (y > canvas.height + 50) {
+                    drops[i] = Math.random() * -20;
+                    speeds[i] = 0.08 + Math.random() * 0.22;
+                }
+            }
+
+            // Draw floating tech words
+            for (const f of floaters) {
+                ctx.font = `${11 + Math.random() * 3}px 'JetBrains Mono', monospace`;
+                const isRed = Math.random() < 0.3;
+                ctx.fillStyle = isRed
+                    ? `rgba(255, 0, 64, ${f.opacity})`
+                    : `rgba(232, 232, 232, ${f.opacity * 0.6})`;
+                ctx.fillText(f.text, f.x, f.y);
+
+                f.y += f.speed;
+                if (f.y > canvas.height + 20) {
+                    f.y = -20;
+                    f.x = Math.random() * canvas.width;
+                    f.text = TECH_WORDS[Math.floor(Math.random() * TECH_WORDS.length)];
+                }
+            }
+
+            animRef.current = requestAnimationFrame(draw);
+        };
+
+        draw();
+
+        return () => {
+            window.removeEventListener("resize", resize);
+            cancelAnimationFrame(animRef.current);
+        };
+    }, []);
+
+    useEffect(() => {
+        const cleanup = initRain();
+        return cleanup;
+    }, [initRain]);
+
+    return (
+        <canvas
+            ref={canvasRef}
+            className="absolute inset-0 z-[1] pointer-events-none"
+            style={{ opacity: 0.8 }}
+        />
+    );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO COMPONENT
+   ═══════════════════════════════════════════════════════════════ */
 
 export default function Hero() {
     const [roleIndex, setRoleIndex] = useState(0);
     const [displayText, setDisplayText] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
 
-    /* Mouse parallax tracking */
-    const containerRef = useRef<HTMLElement>(null);
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const smoothX = useSpring(mouseX, { damping: 50, stiffness: 200 });
-    const smoothY = useSpring(mouseY, { damping: 50, stiffness: 200 });
-
-    // Amplified 3D rotations for profound depth
-    const rotateX = useTransform(smoothY, [-1, 1], [15, -15]);
-    const rotateY = useTransform(smoothX, [-1, 1], [-15, 15]);
-    const translateX = useTransform(smoothX, [-1, 1], [-15, 15]);
-    const translateY = useTransform(smoothY, [-1, 1], [-15, 15]);
-
-    useEffect(() => {
-        const onMove = (e: MouseEvent) => {
-            const w = window.innerWidth;
-            const h = window.innerHeight;
-            mouseX.set((e.clientX / w - 0.5) * 2);
-            mouseY.set((e.clientY / h - 0.5) * 2);
-        };
-        window.addEventListener("mousemove", onMove);
-        return () => window.removeEventListener("mousemove", onMove);
-    }, [mouseX, mouseY]);
-
-    /* Typewriter */
     useEffect(() => {
         const current = ROLES[roleIndex];
         const speed = isDeleting ? 40 : 80;
@@ -43,7 +165,7 @@ export default function Hero() {
             if (!isDeleting) {
                 setDisplayText(current.slice(0, displayText.length + 1));
                 if (displayText.length + 1 === current.length) {
-                    setTimeout(() => setIsDeleting(true), 1800);
+                    setTimeout(() => setIsDeleting(true), 2000);
                 }
             } else {
                 setDisplayText(current.slice(0, displayText.length - 1));
@@ -57,231 +179,162 @@ export default function Hero() {
     }, [displayText, isDeleting, roleIndex]);
 
     return (
-        <section
-            ref={containerRef}
-            className="relative min-h-screen flex flex-col items-center justify-start pt-[180px] md:pt-[200px] pb-20 px-6 overflow-hidden grid-pattern"
-        >
-            {/* Radial ambient gradients */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(0,255,135,0.09)_0%,transparent_65%)] pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_100%_100%,rgba(0,212,255,0.06)_0%,transparent_60%)] pointer-events-none" />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+            {/* Matrix code rain background */}
+            <MatrixRain />
 
-            {/* 3D Background */}
-            <Background3D />
+            {/* Gradient overlays on top of rain */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,0,64,0.12)_0%,transparent_60%)] pointer-events-none z-[2]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(255,45,45,0.06)_0%,transparent_50%)] pointer-events-none z-[2]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/60 via-transparent to-[#050505]/80 pointer-events-none z-[2]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-[#050505]/40 pointer-events-none z-[2]" />
 
-            {/* ── Fixed corner HUD elements ────────────────────────────── */}
-            <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}
-                className="absolute top-28 left-6 hidden lg:flex flex-col gap-1 pointer-events-none z-20"
-            >
-                <span className="font-mono text-[8px] text-[#00ff87] opacity-40 tracking-[0.3em]">VIEWPORT</span>
-                <span className="font-mono text-[8px] text-[var(--text-muted)] tracking-[0.2em]">LAT: 28.6°N</span>
-                <span className="font-mono text-[8px] text-[var(--text-muted)] tracking-[0.2em]">LNG: 77.4°E</span>
-                <div className="w-16 h-[1px] bg-[rgba(0,255,135,0.2)] mt-2" />
-                <span className="font-mono text-[8px] text-[var(--text-muted)] tracking-[0.2em]">IND · UTC+5:30</span>
-            </motion.div>
+            {/* ── Content — centered layout ──────────────────────────── */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center">
 
-            <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }}
-                className="absolute top-28 right-6 hidden lg:flex flex-col items-end gap-1 pointer-events-none z-20"
-            >
-                <span className="font-mono text-[8px] text-[#00ff87] opacity-40 tracking-[0.3em]">STATUS</span>
-                <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
-                    <span className="font-mono text-[8px] text-[#00ff87] opacity-70 tracking-[0.2em]">ONLINE</span>
-                </div>
-                <span className="font-mono text-[8px] text-[var(--text-muted)] tracking-[0.2em]">SYS_V 4.2.1</span>
-                <div className="w-16 h-[1px] bg-[rgba(0,255,135,0.2)] mt-2" />
-                <span className="font-mono text-[8px] text-[var(--text-muted)] tracking-[0.2em]">AVAIL FOR WORK</span>
-            </motion.div>
-
-            {/* ── Main Content — parallax wrapper ──────────────────────── */}
-            <motion.div
-                className="relative z-10 text-center max-w-7xl mx-auto flex flex-col items-center"
-                style={{ rotateX, rotateY, transformPerspective: 1200, transformStyle: "preserve-3d" }}
-            >
                 {/* Status badge */}
                 <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: -15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-[rgba(0,255,135,0.2)] bg-[rgba(0,255,135,0.04)] mb-10"
+                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" as const }}
+                    className="flex items-center gap-2.5 px-5 py-2 rounded-full border border-[rgba(255,0,64,0.15)] bg-[rgba(255,0,64,0.04)] backdrop-blur-sm mb-8"
                 >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00ff87] animate-pulse" />
-                    <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[#00ff87] opacity-75">
-                        Available for new projects
+                    <span className="w-2 h-2 rounded-full bg-[#ff0040] animate-pulse" />
+                    <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#ff0040]">
+                        Open to Work
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[rgba(0,255,135,0.3)]" />
                 </motion.div>
 
-                {/* Main headline with per-word parallax depth */}
+                {/* Main headline */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" as const }}
+                    className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[0.92] tracking-tight mb-6"
+                >
+                    <span className="text-[var(--text-primary)]">Madhup</span>
+                    <br />
+                    <span
+                        className="text-transparent bg-clip-text"
+                        style={{
+                            backgroundImage: "linear-gradient(135deg, #ff0040 0%, #ff2d2d 50%, #ff0040 100%)",
+                        }}
+                    >
+                        Kumar Yadav
+                    </span>
+                </motion.h1>
+
+                {/* Role typewriter */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mb-4 relative"
-                    style={{ transformStyle: "preserve-3d" }}
+                    transition={{ delay: 0.8, duration: 0.6 }}
+                    className="flex items-center justify-center gap-3 mb-6 h-8"
                 >
-                    {/* Deep Background 3D Ghost */}
-                    <div className="absolute inset-0 select-none pointer-events-none" aria-hidden
-                        style={{ transform: "translateZ(-120px)" }}>
-                        <span
-                            className="font-display block leading-[0.88] tracking-wide"
-                            style={{
-                                fontSize: "clamp(4rem, 13vw, 12rem)",
-                                color: "transparent",
-                                WebkitTextStroke: "2px rgba(0,255,135,0.08)",
-                                textShadow: "0 0 40px rgba(0,255,135,0.1)",
-                                position: "absolute",
-                                top: 0,
-                                left: 0,
-                                right: 0,
-                            }}
-                        >
-                            MADHUP<br />KUMAR<br />YADAV
-                        </span>
-                    </div>
-
-                    <h1 className="font-display leading-[0.88] tracking-wide select-none relative"
-                        style={{ fontSize: "clamp(4rem, 13vw, 12rem)", transformStyle: "preserve-3d" }}>
-
-                        {/* MADHUP - Extrusion styling */}
-                        <motion.span
-                            className="block"
-                            style={{
-                                x: translateX,
-                                y: translateY,
-                                z: useTransform(smoothX, [-1, 1], [-30, 0]),
-                                color: "#e2edf5",
-                                textShadow: "1px 1px 0 #080c10, 2px 2px 0 #005040, 3px 3px 0 #005040, 4px 4px 0 #00ff87, 5px 5px 0 #00ff87, 8px 8px 20px rgba(0,0,0,0.8)"
-                            }}
-                        >
-                            MADHUP
-                        </motion.span>
-
-                        {/* KUMAR - Massive z-pop forward */}
-                        <motion.span
-                            className="block"
-                            style={{
-                                color: "#00ff87", // Solid neon for better 3D readability
-                                x: useTransform(smoothX, [-1, 1], [-10, 10]),
-                                z: useTransform(smoothY, [-1, 1], [40, 90]), // Popping out of screen
-                                textShadow: "1px 1px 0 #080c10, 2px 2px 0 #005040, 3px 3px 0 #00d4ff, 4px 4px 0 #00d4ff, 5px 5px 0 #00d4ff, 10px 10px 30px rgba(0,255,135,0.5)",
-                                WebkitTextStroke: "1px #ffffff"
-                            }}
-                        >
-                            KUMAR
-                        </motion.span>
-
-                        {/* YADAV - Deep block shadow */}
-                        <motion.span
-                            className="block relative"
-                            style={{
-                                color: "#e2edf5",
-                                x: useTransform(smoothX, [-1, 1], [15, -15]),
-                                y: useTransform(smoothY, [-1, 1], [-5, 5]),
-                                z: 50,
-                                textShadow: "1px 1px 0 #080c10, 2px 2px 0 #3a1c71, 3px 3px 0 #7c3aed, 4px 4px 0 #7c3aed, 5px 5px 0 #7c3aed, 6px 6px 0 #7c3aed, 12px 12px 40px rgba(0,0,0,0.9)"
-                            }}
-                        >
-                            YADAV
-                        </motion.span>
-                    </h1>
-                </motion.div>
-
-                {/* Typewriter role */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="mb-8 h-9 flex items-center justify-center gap-3"
-                >
-                    {/* left bracket decoration */}
-                    <span className="font-mono text-[#00ff87] opacity-30 text-2xl hidden md:block">[</span>
-                    <span className="font-mono text-lg md:text-xl text-[#00ff87] tracking-widest">
+                    <div className="w-6 h-[1px] bg-gradient-to-r from-transparent to-[#ff0040]" />
+                    <span className="font-mono text-sm md:text-base text-[var(--text-secondary)] tracking-[0.15em]">
                         {displayText}
-                        <span className="animate-blink">_</span>
+                        <span className="text-[#ff0040] animate-blink">|</span>
                     </span>
-                    <span className="font-mono text-[#00ff87] opacity-30 text-2xl hidden md:block">]</span>
+                    <div className="w-6 h-[1px] bg-gradient-to-l from-transparent to-[#ff0040]" />
                 </motion.div>
 
-                {/* Sub-description */}
+                {/* Description */}
                 <motion.p
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
-                    className="max-w-xl text-base md:text-lg text-[var(--text-secondary)] leading-relaxed mb-12"
+                    transition={{ duration: 0.7, delay: 1, ease: "easeOut" as const }}
+                    className="max-w-2xl text-base md:text-lg text-[var(--text-secondary)] leading-relaxed mb-10"
                 >
-                    I engineer{" "}
-                    <span className="text-[var(--text-primary)] font-semibold">high-performance</span>{" "}
-                    digital systems where architectural precision meets{" "}
-                    <span className="text-[var(--text-primary)] font-semibold">pixel-perfect</span>{" "}
-                    execution.{" "}
-                    <span className="text-[#00ff87] font-mono text-sm opacity-70">// Based in India</span>
+                    I build <span className="text-[var(--text-primary)] font-medium">secure, high-performance</span> digital
+                    systems and hunt vulnerabilities before they become threats.{" "}
+                    <span className="text-[var(--text-primary)] font-medium">Developer by day, ethical hacker by design.</span>
                 </motion.p>
 
                 {/* CTA Buttons */}
                 <motion.div
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-                    className="flex flex-col md:flex-row items-center justify-center gap-4"
+                    transition={{ duration: 0.7, delay: 1.2, ease: "easeOut" as const }}
+                    className="flex flex-wrap items-center justify-center gap-4 mb-16"
                 >
-                    <a href="#contact" className="btn-primary px-10 py-4 rounded-xl text-sm group relative overflow-hidden">
-                        <span className="relative z-10">↳ Start a Project</span>
+                    <a href="#contact" className="btn-primary px-10 py-4 rounded-xl text-sm">
+                        Get in Touch
                     </a>
                     <a href="/builds" className="btn-ghost px-10 py-4 rounded-xl text-sm">
-                        /view builds
+                        View Projects
+                    </a>
+                    <a
+                        href="/resume"
+                        className="btn-ghost px-10 py-4 rounded-xl text-sm border-[rgba(255,45,45,0.15)] text-[#ff2d2d] hover:border-[#ff2d2d] hover:bg-[rgba(255,45,45,0.06)]"
+                    >
+                        Resume ↗
                     </a>
                 </motion.div>
 
                 {/* Stats row */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.8 }}
-                    className="mt-20 grid grid-cols-3 gap-10 md:gap-24 border-t border-[var(--border-subtle)] pt-8 w-full max-w-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.6, duration: 0.8, ease: "easeOut" as const }}
+                    className="grid grid-cols-3 gap-6 md:gap-12 w-full max-w-xl"
                 >
                     {[
-                        { label: "Side Projects", value: "10+" },
-                        { label: "Years Building", value: "3+" },
-                        { label: "Stack Expertise", value: "Full" },
+                        { value: "10+", label: "Projects Built" },
+                        { value: "4+", label: "Years Coding" },
+                        { value: "50+", label: "Vulns Found" },
                     ].map((s, i) => (
-                        <div key={i} className="flex flex-col items-center gap-0.5">
-                            <span className="font-display text-3xl md:text-4xl text-[var(--text-primary)]">{s.value}</span>
-                            <span className="font-mono text-[8px] tracking-widest uppercase text-[var(--text-muted)]">{s.label}</span>
+                        <div
+                            key={i}
+                            className="flex flex-col items-center gap-1.5 py-5 rounded-xl border border-[var(--border-subtle)] bg-[rgba(10,10,10,0.5)] backdrop-blur-sm"
+                        >
+                            <span className="text-2xl md:text-3xl font-extrabold text-[var(--text-primary)]">{s.value}</span>
+                            <span className="font-mono text-[9px] tracking-[0.15em] uppercase text-[var(--text-muted)]">{s.label}</span>
                         </div>
                     ))}
                 </motion.div>
-            </motion.div>
 
-            {/* Side vertical text (left) */}
-            <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.4 }}
-                className="absolute left-8 bottom-32 hidden xl:block pointer-events-none z-20"
-            >
-                <div
-                    className="font-mono text-[9px] tracking-[0.4em] uppercase text-[var(--text-muted)] opacity-50"
-                    style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                {/* Social links */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 2, duration: 0.6 }}
+                    className="flex items-center gap-6 mt-10"
                 >
-                    MKY · FULLSTACK · 2024
-                </div>
-            </motion.div>
+                    {[
+                        { label: "GitHub", href: "https://github.com/Madhup7008" },
+                        { label: "LinkedIn", href: "https://www.linkedin.com/in/madhup-kumar-yadav-641a85270/" },
+                    ].map((s) => (
+                        <a
+                            key={s.label}
+                            href={s.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-mono text-xs tracking-wider text-[var(--text-muted)] hover:text-[#ff0040] transition-colors duration-300 border-b border-transparent hover:border-[#ff0040]"
+                        >
+                            {s.label} ↗
+                        </a>
+                    ))}
+                    <span className="text-[var(--text-muted)] text-[10px]">·</span>
+                    <span className="font-mono text-[10px] text-[var(--text-muted)]">India · UTC+5:30</span>
+                </motion.div>
+            </div>
 
             {/* Scroll indicator */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2.6 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+                transition={{ delay: 2.5 }}
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
             >
-                <div className="flex flex-col items-center gap-2">
-                    <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-[var(--text-muted)]">scroll</span>
-                    <motion.div
-                        animate={{ scaleY: [1, 0.3, 1], opacity: [0.6, 1, 0.6] }}
-                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                        className="w-[1px] h-10 bg-gradient-to-b from-[#00ff87] to-transparent origin-top"
-                    />
-                </div>
+                <motion.div
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="flex flex-col items-center gap-2"
+                >
+                    <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-[var(--text-muted)]">scroll</span>
+                    <div className="w-[1px] h-8 bg-gradient-to-b from-[#ff0040] to-transparent" />
+                </motion.div>
             </motion.div>
         </section>
     );

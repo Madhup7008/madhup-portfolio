@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="redGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff0040" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ff0040" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#cc0022" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#999999"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#redGlow)"/>
+
+  <!-- Matrix rain columns (decorative vertical text) -->
+  <g opacity="0.06" font-family="monospace" font-size="11" fill="#ff0040">
+    <text x="50" y="30"><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">ア</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">カ</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">マ</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">キ</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">テ</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">ス</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">ク</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">ム</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">ネ</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">リ</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">ヒ</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">ソ</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">ノ</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">エ</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">フ</tspan><tspan x="50" dy="18">1</tspan><tspan x="50" dy="18">ウ</tspan><tspan x="50" dy="18">0</tspan><tspan x="50" dy="18">ラ</tspan></text>
+    <text x="120" y="60"><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">タ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">ケ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">ハ</tspan><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">シ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">コ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">ト</tspan><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">ヤ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">ユ</tspan><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">チ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">ニ</tspan><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">オ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">ワ</tspan><tspan x="120" dy="18">1</tspan><tspan x="120" dy="18">モ</tspan><tspan x="120" dy="18">0</tspan><tspan x="120" dy="18">ナ</tspan></text>
+    <text x="250" y="10"><tspan x="250" dy="18">ク</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">ミ</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">ロ</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">ツ</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">ヘ</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">レ</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">ホ</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">メ</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">セ</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">サ</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">ヨ</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">ル</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">ン</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">イ</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">ア</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">カ</tspan><tspan x="250" dy="18">1</tspan><tspan x="250" dy="18">マ</tspan><tspan x="250" dy="18">0</tspan><tspan x="250" dy="18">キ</tspan><tspan x="250" dy="18">1</tspan></text>
+    <text x="400" y="45"><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">フ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">ウ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">エ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">ネ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">ム</tspan><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">リ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">ス</tspan><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">テ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">ク</tspan><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">ヒ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">ソ</tspan><tspan x="400" dy="18">0</tspan><tspan x="400" dy="18">ノ</tspan><tspan x="400" dy="18">1</tspan><tspan x="400" dy="18">タ</tspan></text>
+    <text x="700" y="20"><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">ケ</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">ハ</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">コ</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">ト</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">ヤ</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">チ</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">ニ</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">ワ</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">モ</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">ロ</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">ツ</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">ホ</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">メ</tspan><tspan x="700" dy="18">1</tspan><tspan x="700" dy="18">セ</tspan><tspan x="700" dy="18">0</tspan><tspan x="700" dy="18">ル</tspan><tspan x="700" dy="18">1</tspan></text>
+    <text x="850" y="55"><tspan x="850" dy="18">テ</tspan><tspan x="850" dy="18">0</tspan><tspan x="850" dy="18">1</tspan><tspan x="850" dy="18">ス</tspan><tspan x="850" dy="18">0</tspan><tspan x="850" dy="18">ク</tspan><tspan x="850" dy="18">1</tspan><tspan x="850" dy="18">0</tspan><tspan x="850" dy="18">ヒ</tspan><tspan x="850" dy="18">1</tspan><tspan x="850" dy="18">0</tspan><tspan x="850" dy="18">ソ</tspan><tspan x="850" dy="18">1</tspan><tspan x="850" dy="18">ノ</tspan><tspan x="850" dy="18">0</tspan><tspan x="850" dy="18">エ</tspan><tspan x="850" dy="18">1</tspan><tspan x="850" dy="18">フ</tspan><tspan x="850" dy="18">0</tspan><tspan x="850" dy="18">ウ</tspan><tspan x="850" dy="18">1</tspan><tspan x="850" dy="18">ラ</tspan><tspan x="850" dy="18">0</tspan><tspan x="850" dy="18">サ</tspan><tspan x="850" dy="18">1</tspan><tspan x="850" dy="18">ヨ</tspan></text>
+    <text x="1000" y="25"><tspan x="1000" dy="18">シ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">タ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">ケ</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">ハ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">コ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">ト</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">ヤ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">ユ</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">チ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">ニ</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">オ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">モ</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">ナ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">ア</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">ミ</tspan><tspan x="1000" dy="18">0</tspan><tspan x="1000" dy="18">レ</tspan><tspan x="1000" dy="18">1</tspan><tspan x="1000" dy="18">ン</tspan></text>
+    <text x="1100" y="40"><tspan x="1100" dy="18">0</tspan><tspan x="1100" dy="18">ム</tspan><tspan x="1100" dy="18">1</tspan><tspan x="1100" dy="18">リ</tspan><tspan x="1100" dy="18">0</tspan><tspan x="1100" dy="18">ス</tspan><tspan x="1100" dy="18">1</tspan><tspan x="1100" dy="18">テ</tspan><tspan x="1100" dy="18">0</tspan><tspan x="1100" dy="18">ク</tspan><tspan x="1100" dy="18">1</tspan><tspan x="1100" dy="18">0</tspan><tspan x="1100" dy="18">ヒ</tspan><tspan x="1100" dy="18">1</tspan><tspan x="1100" dy="18">ソ</tspan><tspan x="1100" dy="18">0</tspan><tspan x="1100" dy="18">ノ</tspan><tspan x="1100" dy="18">1</tspan><tspan x="1100" dy="18">エ</tspan><tspan x="1100" dy="18">0</tspan><tspan x="1100" dy="18">フ</tspan><tspan x="1100" dy="18">1</tspan><tspan x="1100" dy="18">ウ</tspan><tspan x="1100" dy="18">0</tspan><tspan x="1100" dy="18">ラ</tspan></text>
+    <text x="550" y="35"><tspan x="550" dy="18">カ</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">マ</tspan><tspan x="550" dy="18">1</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">キ</tspan><tspan x="550" dy="18">1</tspan><tspan x="550" dy="18">テ</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">1</tspan><tspan x="550" dy="18">ス</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">ク</tspan><tspan x="550" dy="18">1</tspan><tspan x="550" dy="18">ム</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">ネ</tspan><tspan x="550" dy="18">1</tspan><tspan x="550" dy="18">リ</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">ヒ</tspan><tspan x="550" dy="18">1</tspan><tspan x="550" dy="18">ソ</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">ノ</tspan><tspan x="550" dy="18">1</tspan><tspan x="550" dy="18">タ</tspan><tspan x="550" dy="18">0</tspan><tspan x="550" dy="18">ケ</tspan><tspan x="550" dy="18">1</tspan></text>
+  </g>
+
+  <!-- Bright rain columns (highlighted) -->
+  <g opacity="0.12" font-family="monospace" font-size="11">
+    <text x="180" y="15" fill="#ffffff"><tspan x="180" dy="18">1</tspan><tspan x="180" dy="18" fill="#ff0040">0</tspan><tspan x="180" dy="18" fill="#ff0040" opacity="0.7">ア</tspan><tspan x="180" dy="18" fill="#ff0040" opacity="0.5">1</tspan><tspan x="180" dy="18" fill="#ff0040" opacity="0.3">カ</tspan><tspan x="180" dy="18" fill="#ff0040" opacity="0.2">0</tspan></text>
+    <text x="950" y="80" fill="#ffffff"><tspan x="950" dy="18">マ</tspan><tspan x="950" dy="18" fill="#ff0040">0</tspan><tspan x="950" dy="18" fill="#ff0040" opacity="0.7">1</tspan><tspan x="950" dy="18" fill="#ff0040" opacity="0.5">テ</tspan><tspan x="950" dy="18" fill="#ff0040" opacity="0.3">0</tspan><tspan x="950" dy="18" fill="#ff0040" opacity="0.15">ス</tspan></text>
+    <text x="330" y="100" fill="#ffffff"><tspan x="330" dy="18">ク</tspan><tspan x="330" dy="18" fill="#ff0040">1</tspan><tspan x="330" dy="18" fill="#ff0040" opacity="0.7">ネ</tspan><tspan x="330" dy="18" fill="#ff0040" opacity="0.4">0</tspan><tspan x="330" dy="18" fill="#ff0040" opacity="0.2">リ</tspan></text>
+  </g>
+
+  <!-- Navbar -->
+  <rect x="0" y="0" width="1200" height="56" fill="#080808" opacity="0.9"/>
+  <rect x="0" y="55" width="1200" height="1" fill="#ff0040" opacity="0.1"/>
+  <circle cx="30" cy="28" r="8" fill="#ff0040" filter="url(#softGlow)" opacity="0.8"/>
+  <text x="50" y="33" font-family="monospace" font-size="12" fill="#ff0040" letter-spacing="3" filter="url(#glow)">MKY_OS V4</text>
+  <text x="870" y="33" font-family="monospace" font-size="10" fill="#666666" letter-spacing="4">/ ABOUT</text>
+  <text x="970" y="33" font-family="monospace" font-size="10" fill="#666666" letter-spacing="4">/ BUILDS</text>
+  <text x="1070" y="33" font-family="monospace" font-size="10" fill="#666666" letter-spacing="4">/ LEARN</text>
+
+  <!-- Status badge -->
+  <rect x="490" y="200" rx="20" ry="20" width="220" height="32" fill="none" stroke="#ff0040" stroke-opacity="0.2"/>
+  <circle cx="515" cy="216" r="4" fill="#ff0040"/>
+  <text x="530" y="221" font-family="monospace" font-size="9" fill="#ff0040" letter-spacing="3">OPEN TO WORK</text>
+
+  <!-- Main name -->
+  <text x="600" y="310" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="82" fill="url(#textGrad)" font-weight="900" letter-spacing="12">MADHUP</text>
+  <text x="600" y="400" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="82" fill="url(#textGrad)" font-weight="900" letter-spacing="12" opacity="0.7">KUMAR</text>
+  <text x="600" y="490" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="82" fill="url(#textGrad)" font-weight="900" letter-spacing="12" opacity="0.5">YADAV</text>
+
+  <!-- Red accent line -->
+  <rect x="450" y="515" width="300" height="2" fill="#ff0040" opacity="0.6" filter="url(#glow)"/>
+
+  <!-- Subtitle -->
+  <text x="600" y="555" text-anchor="middle" font-family="monospace" font-size="11" fill="#ff0040" letter-spacing="6" opacity="0.8">SECURITY ENGINEER &amp; DEVELOPER</text>
+
+  <!-- Floating tech words (decorative) -->
+  <g font-family="monospace" font-size="9" opacity="0.08" fill="#ff0040">
+    <text x="80" y="450" letter-spacing="2">NMAP</text>
+    <text x="200" y="600" letter-spacing="2">PYTHON</text>
+    <text x="900" y="350" letter-spacing="2">BURP_SUITE</text>
+    <text x="1050" y="550" letter-spacing="2">REACT</text>
+    <text x="150" y="280" letter-spacing="2">192.168.1.1</text>
+    <text x="950" y="680" letter-spacing="2">NEXT.JS</text>
+    <text x="100" y="680" letter-spacing="2">WIRESHARK</text>
+    <text x="1020" y="200" letter-spacing="2">TYPESCRIPT</text>
+    <text x="750" y="650" letter-spacing="2">KALI_LINUX</text>
+    <text x="350" y="700" letter-spacing="2">METASPLOIT</text>
+  </g>
+
+  <!-- Bottom gradient fade -->
+  <rect x="0" y="650" width="1200" height="100" fill="url(#bg)" opacity="0.7"/>
+
+  <!-- Corner decoratives -->
+  <rect x="20" y="700" width="60" height="1" fill="#ff0040" opacity="0.3"/>
+  <rect x="20" y="710" width="30" height="1" fill="#ff0040" opacity="0.15"/>
+  <rect x="1120" y="700" width="60" height="1" fill="#ff0040" opacity="0.3"/>
+  <rect x="1150" y="710" width="30" height="1" fill="#ff0040" opacity="0.15"/>
+</svg>

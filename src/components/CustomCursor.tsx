@@ -9,6 +9,7 @@ export default function CustomCursor() {
     const [state, setState] = useState<CursorState>("default");
     const [hoverLabel, setHoverLabel] = useState("");
     const [visible, setVisible] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
 
     // Exact raw position (no spring, for perfect targeting)
     const rawX = useMotionValue(-400);
@@ -85,6 +86,13 @@ export default function CustomCursor() {
         const onLeave = () => setVisible(false);
         const onEnter = () => setVisible(true);
 
+        // Detect touch devices
+        const isTouch = window.matchMedia("(pointer: coarse)").matches;
+        if (isTouch) {
+            setIsTouchDevice(true);
+            return;
+        }
+
         window.addEventListener("mousemove", handleMouseMove, { passive: true });
         window.addEventListener("mouseover", handleMouseOver, { passive: true });
         window.addEventListener("mousedown", onDown);
@@ -103,6 +111,9 @@ export default function CustomCursor() {
 
     const isHover = state === "hover";
     const isClick = state === "click";
+
+    // Don't render on touch devices
+    if (isTouchDevice) return null;
 
     // Polygon coordinates shifted by 1px so the stroke isn't clipped
     const ARROW_POINTS = "1,1 1,23 7,17 11,27 15,25 11,15 21,15";
@@ -124,7 +135,7 @@ export default function CustomCursor() {
                     style={{
                         transform: "translate(-50%, -50%)",
                         borderRadius: "50%",
-                        background: "radial-gradient(circle, #00ff87 0%, rgba(0,212,255,0.4) 40%, transparent 70%)",
+                        background: "radial-gradient(circle, #ff0040 0%, rgba(255,45,45,0.4) 40%, transparent 70%)",
                         filter: "blur(24px)",
                     }}
                 />
@@ -156,8 +167,8 @@ export default function CustomCursor() {
                         animate={{ z: depthZ2, opacity: visible ? (isHover ? 0.5 : 0.15) : 0 }}
                         transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     >
-                        <svg width="32" height="32" style={{ filter: "drop-shadow(0 0 4px #00d4ff)" }}>
-                            <polygon points={ARROW_POINTS} fill="rgba(0,212,255,0.02)" stroke="#00d4ff" strokeWidth="1.2" strokeLinejoin="miter" />
+                        <svg width="32" height="32" style={{ filter: "drop-shadow(0 0 4px #ff2d2d)" }}>
+                            <polygon points={ARROW_POINTS} fill="rgba(255,45,45,0.02)" stroke="#ff2d2d" strokeWidth="1.2" strokeLinejoin="miter" />
                         </svg>
                     </motion.div>
 
@@ -167,8 +178,8 @@ export default function CustomCursor() {
                         animate={{ z: depthZ1, opacity: visible ? (isHover ? 0.7 : 0.4) : 0 }}
                         transition={{ type: "spring", stiffness: 250, damping: 22 }}
                     >
-                        <svg width="32" height="32" style={{ filter: "drop-shadow(0 0 6px rgba(0,255,135,0.6))" }}>
-                            <polygon points={ARROW_POINTS} fill="rgba(0,255,135,0.05)" stroke="#00ff87" strokeWidth="1.5" strokeLinejoin="miter" />
+                        <svg width="32" height="32" style={{ filter: "drop-shadow(0 0 6px rgba(255,0,64,0.6))" }}>
+                            <polygon points={ARROW_POINTS} fill="rgba(255,0,64,0.05)" stroke="#ff0040" strokeWidth="1.5" strokeLinejoin="miter" />
                         </svg>
                     </motion.div>
 
@@ -180,7 +191,7 @@ export default function CustomCursor() {
                         <svg width="32" height="32" style={{ filter: "drop-shadow(0px 6px 10px rgba(0,0,0,0.6))" }}>
                             <polygon
                                 points={ARROW_POINTS}
-                                fill="rgba(8,12,16,0.2)" // Barely visible internal dark glass, allows back layers to peek through
+                                fill="rgba(5,5,5,0.2)" // Barely visible internal dark glass, allows back layers to peek through
                                 stroke="#ffffff"
                                 strokeWidth="2"
                                 strokeLinejoin="miter"
@@ -204,11 +215,11 @@ export default function CustomCursor() {
                         left: "20px",
                         fontFamily: "'JetBrains Mono', monospace",
                         fontSize: "9px",
-                        color: isHover ? "#00ff87" : "#00d4ff",
+                        color: isHover ? "#ff0040" : "#ff2d2d",
                         letterSpacing: "0.2em",
                         textTransform: "uppercase",
                         whiteSpace: "nowrap",
-                        textShadow: isHover ? "0 0 10px rgba(0,255,135,0.6)" : "none",
+                        textShadow: isHover ? "0 0 10px rgba(255,0,64,0.6)" : "none",
                         pointerEvents: "none"
                     }}
                 >
