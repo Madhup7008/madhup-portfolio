@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import CustomCursor from "@/components/CustomCursor";
 import Contact from "@/components/Contact";
 import { motion } from "framer-motion";
 import { MapPin, Award, Code2, Globe2 } from "lucide-react";
@@ -9,7 +8,6 @@ import { MapPin, Award, Code2, Globe2 } from "lucide-react";
 export default function AboutPage() {
     return (
         <main className="min-h-screen bg-black">
-            <CustomCursor />
             <Navbar />
 
             {/* Hero Section of About Page */}

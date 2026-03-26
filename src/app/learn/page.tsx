@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import CustomCursor from "@/components/CustomCursor";
 import Contact from "@/components/Contact";
 import Skills from "@/components/Skills";
 import { motion } from "framer-motion";
@@ -9,7 +8,6 @@ import { motion } from "framer-motion";
 export default function LearnPage() {
     return (
         <main className="min-h-screen bg-black">
-            <CustomCursor />
             <Navbar />
 
             <div className="pt-40">

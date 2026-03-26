@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Zap, X, Mail, Linkedin, FileText } from "lucide-react";
+import { Sparkles, X, Mail, Linkedin, FileText } from "lucide-react";
 
 export default function HireMeCTA() {
     const [visible, setVisible] = useState(false);
@@ -28,19 +28,19 @@ export default function HireMeCTA() {
             label: "Email Me",
             href: "mailto:madhupyadav1809@gmail.com",
             icon: Mail,
-            color: "#ff0040",
+            color: "#22d3ee",
         },
         {
             label: "LinkedIn",
             href: "https://www.linkedin.com/in/madhup-kumar-yadav-641a85270/",
             icon: Linkedin,
-            color: "#ff2d2d",
+            color: "#3b82f6",
         },
         {
             label: "View Resume",
             href: "/resume",
             icon: FileText,
-            color: "#cc0022",
+            color: "#0ea5e9",
         },
     ];
 
@@ -75,7 +75,7 @@ export default function HireMeCTA() {
                                             initial={{ opacity: 0, x: 20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: i * 0.07 }}
-                                            className="flex items-center gap-3 pr-4 pl-3 py-2.5 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(5,5,5,0.92)] backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] group hover:border-[rgba(255,255,255,0.15)] transition-all duration-300 self-end"
+                                            className="flex items-center gap-3 pr-4 pl-3 py-2.5 rounded-2xl border border-[var(--border-subtle)] bg-[rgba(10,22,42,0.92)] backdrop-blur-xl shadow-[0_8px_28px_rgba(0,0,0,0.45)] group hover:border-[var(--border-medium)] transition-all duration-300 self-end"
                                             style={{ minWidth: "160px" }}
                                         >
                                             <div
@@ -103,7 +103,7 @@ export default function HireMeCTA() {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={handleDismiss}
-                            className="w-6 h-6 rounded-full bg-[rgba(8,12,16,0.8)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-red-500/40 transition-all"
+                            className="w-6 h-6 rounded-full bg-[rgba(10,22,42,0.85)] border border-[var(--border-subtle)] flex items-center justify-center text-[var(--text-muted)] hover:text-white hover:border-[var(--border-medium)] transition-all"
                             title="Dismiss"
                         >
                             <X className="w-3 h-3" />
@@ -114,9 +114,10 @@ export default function HireMeCTA() {
                             onClick={() => setExpanded(!expanded)}
                             whileHover={{ scale: 1.04 }}
                             whileTap={{ scale: 0.96 }}
-                            className="relative flex items-center gap-3 px-5 py-3 rounded-2xl overflow-hidden font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#050505] shadow-[0_0_30px_rgba(255,0,64,0.35),0_8px_24px_rgba(0,0,0,0.4)]"
+                            className="relative flex items-center gap-3 px-5 py-3 rounded-2xl overflow-hidden font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#050505]"
                             style={{
-                                background: "linear-gradient(135deg, #ff0040 0%, #ff2d2d 100%)",
+                                background: "linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%)",
+                                boxShadow: "0 0 26px rgba(59,130,246,0.35), 0 8px 24px rgba(0,0,0,0.3)",
                             }}
                         >
                             {/* Shimmer */}
@@ -133,8 +134,8 @@ export default function HireMeCTA() {
                             <span className="relative w-2 h-2 rounded-full bg-[#050505] flex-shrink-0">
                                 <span className="absolute inset-0 rounded-full bg-[#050505] animate-ping opacity-75" />
                             </span>
-                            <span className="relative">Hire Me</span>
-                            <Zap className="relative w-3.5 h-3.5" />
+                            <span className="relative">Let's Work</span>
+                            <Sparkles className="relative w-3.5 h-3.5" />
                         </motion.button>
                     </div>
                 </motion.div>

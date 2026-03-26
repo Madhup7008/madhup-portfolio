@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import CustomCursor from "@/components/CustomCursor";
 import { motion } from "framer-motion";
 import { Download, Mail, MapPin, Phone, Github, Linkedin, Globe, GraduationCap, Code2, Briefcase, User, Shield, BookOpen } from "lucide-react";
 
@@ -47,7 +46,6 @@ const fadeUp = {
 export default function ResumePage() {
     return (
         <main className="min-h-screen" style={{ background: "var(--bg-primary)" }}>
-            <CustomCursor />
             <Navbar />
 
             <section className="relative pt-44 pb-32 px-6 overflow-hidden">

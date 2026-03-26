@@ -9,7 +9,7 @@ import {
     MessagesSquare, Server, Users, Zap,
     ChevronRight, BellRing
 } from "lucide-react";
-import CustomCursor from "@/components/CustomCursor";
+
 
 const stats = [
     { name: "Total Commits (2024)", value: "2,468", change: "+12.5%", icon: Github, color: "text-blue-500" },
@@ -59,7 +59,6 @@ export default function Dashboard() {
 
     return (
         <main className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-            <CustomCursor />
 
             {/* Ambient Background Lights */}
             <div className="fixed top-0 left-1/4 w-[50vh] h-[50vh] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
