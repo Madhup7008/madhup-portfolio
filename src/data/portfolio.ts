@@ -48,9 +48,9 @@ export const portfolioData = {
       title: "Hometech Solutions",
       description: "A full-scale e-commerce platform with JWT auth, Redis caching, optimized APIs, and streamlined payment processing.",
       tech: ["Next.js", "Express.js", "MongoDB", "Redis", "Razorpay"],
-      link: "#",
+      link: "https://hometech-frontend.onrender.com/",
       github: "https://github.com/Madhup7008",
-      image: "/hometech-preview.jpeg",
+      image: "/hometech-preview.png",
     },
   ],
 };
