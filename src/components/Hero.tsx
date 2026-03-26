@@ -3,29 +3,26 @@
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 
-const ROLES = ["Full Stack Developer", "Cybersecurity Analyst", "Security Engineer", "Penetration Tester"];
+const ROLES = ["Full Stack Developer", "Frontend Engineer", "Backend Engineer", "Product Builder"];
 
 /* ═══════════════════════════════════════════════════════════════
-   MATRIX CODE RAIN — Canvas-based vertical streaming
+    CODE STREAM BACKDROP — Canvas-based vertical streaming
    ═══════════════════════════════════════════════════════════════ */
 
 const CODE_CHARS = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]<>/\\|=+-*&^%$#@!?;:0123456789";
 const TECH_WORDS = [
     "Python", "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Flask",
-    "Nmap", "Burp Suite", "Metasploit", "Wireshark", "Hydra", "SQLMap", "Hashcat",
-    "192.168.1.1", "10.0.0.1", "127.0.0.1", "0.0.0.0:443", "8.8.8.8", "::1",
-    "XSS", "CSRF", "SQLi", "RCE", "LFI", "SSRF", "CVE-2024", "0day",
-    "AES-256", "SHA-512", "RSA-4096", "TLS 1.3", "JWT", "TCP/IP",
-    "$ nmap -sV", "ssh root@", "curl -X POST", "SELECT *", "chmod 777",
-    "netstat -tulpn", "iptables -L", "tcpdump", ":22", ":443", ":8080",
-    "Kali Linux", "OWASP", "Firewall", "IDS/IPS", "Payload", "Shellcode",
-    "C++", "Rust", "Go", "Bash", "Java", "DNS", "HTTP/3", "GraphQL",
-    "Gobuster", "Nikto", "Aircrack", "Dirb", "Bug Bounty", "CTF",
-    "import os", "def exploit():", "class Scanner:", "async fetch()",
-    "const payload =", "return shell;", "exec(cmd)", "socket.connect()",
+    "PostgreSQL", "MongoDB", "Redis", "Docker", "REST", "GraphQL", "Tailwind CSS",
+    "127.0.0.1", "0.0.0.0:3000", "localhost", ":3000", ":8080", "HTTP/3",
+    "CI/CD", "Unit Tests", "Code Review", "Clean Architecture", "Design Systems",
+    "$ npm run dev", "pnpm build", "git commit", "docker compose up", "SELECT *",
+    "const app =", "export default", "async fetch()", "class Service:", "def main():",
+    "C++", "Rust", "Go", "Bash", "Java", "DNS", "CDN", "WebSocket",
+    "Vercel", "Netlify", "Supabase", "Prisma", "Figma", "Analytics",
+    "import os", "return response;", "const config =", "socket.connect()",
 ];
 
-function MatrixRain() {
+function CodeStreamBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const animRef = useRef<number>(0);
 
@@ -180,8 +177,8 @@ export default function Hero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Matrix code rain background */}
-            <MatrixRain />
+            {/* Animated code stream background */}
+            <CodeStreamBackground />
 
             {/* Gradient overlays on top of rain */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,0,64,0.12)_0%,transparent_60%)] pointer-events-none z-[2]" />
@@ -246,9 +243,9 @@ export default function Hero() {
                     transition={{ duration: 0.7, delay: 1, ease: "easeOut" as const }}
                     className="max-w-2xl text-base md:text-lg text-[var(--text-secondary)] leading-relaxed mb-10"
                 >
-                    I build <span className="text-[var(--text-primary)] font-medium">secure, high-performance</span> digital
-                    systems and hunt vulnerabilities before they become threats.{" "}
-                    <span className="text-[var(--text-primary)] font-medium">Developer by day, ethical hacker by design.</span>
+                    I build <span className="text-[var(--text-primary)] font-medium">high-performance, user-focused</span> digital
+                    products across frontend and backend stacks.{" "}
+                    <span className="text-[var(--text-primary)] font-medium">From idea to deployment, I ship with quality and speed.</span>
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -282,7 +279,7 @@ export default function Hero() {
                     {[
                         { value: "10+", label: "Projects Built" },
                         { value: "4+", label: "Years Coding" },
-                        { value: "50+", label: "Vulns Found" },
+                        { value: "50+", label: "Features Shipped" },
                     ].map((s, i) => (
                         <div
                             key={i}

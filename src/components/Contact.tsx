@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Linkedin, Github, Twitter, Mail, Send, CheckCircle2, XCircle, MapPin, Clock, Shield, Lock } from "lucide-react";
+import { Linkedin, Github, Twitter, Mail, Send, CheckCircle2, XCircle, MapPin, Briefcase } from "lucide-react";
 import { useState, useRef, FormEvent } from "react";
 import emailjs from '@emailjs/browser';
 
@@ -53,7 +53,7 @@ export default function Contact() {
                     transition={{ duration: 0.9, ease: "easeOut" }}
                     className="text-center mb-20"
                 >
-                    <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-[#ff0040] opacity-70 block mb-6">_secure.channel</span>
+                    <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-[#ff0040] opacity-70 block mb-6">_let_us_connect</span>
                     <h2
                         className="font-display text-[12vw] md:text-[8rem] lg:text-[10rem] tracking-wide leading-none mb-8 select-none"
                     >
@@ -69,11 +69,11 @@ export default function Contact() {
                             CONTACT
                         </span>
                         <br />
-                        PROTOCOL<span style={{ color: "transparent", WebkitTextStroke: "1.5px rgba(255,0,64,0.25)" }}>.</span>
+                        NOW<span style={{ color: "transparent", WebkitTextStroke: "1.5px rgba(255,0,64,0.25)" }}>.</span>
                     </h2>
                     <p className="text-lg md:text-xl font-light text-[var(--text-secondary)] tracking-tight max-w-2xl mx-auto">
-                        Encrypted channel open. Currently accepting{" "}
-                        <span className="text-[var(--text-primary)] italic font-semibold">security consulting</span>,{" "}
+                        Currently accepting{" "}
+                        <span className="text-[var(--text-primary)] italic font-semibold">full stack development</span>,{" "}
                         <span className="text-[var(--text-primary)] italic font-semibold">freelance development</span> &amp; full-time opportunities.
                     </p>
                 </motion.div>
@@ -90,7 +90,7 @@ export default function Contact() {
                                 className="relative group flex flex-col gap-2"
                             >
                                 <label htmlFor="name" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)] group-focus-within:text-[#ff0040] transition-colors">
-                                    / Identity · Callsign
+                                    / Your Name
                                 </label>
                                 <input
                                     type="text"
@@ -114,7 +114,7 @@ export default function Contact() {
                                 className="relative group flex flex-col gap-2"
                             >
                                 <label htmlFor="email" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)] group-focus-within:text-[#ff0040] transition-colors">
-                                    / Secure Address
+                                    / Email Address
                                 </label>
                                 <input
                                     type="email"
@@ -138,7 +138,7 @@ export default function Contact() {
                             className="flex flex-col gap-2"
                         >
                             <label htmlFor="message" className="font-mono text-[9px] uppercase tracking-[0.4em] text-[var(--text-muted)]">
-                                / Encrypted Payload
+                                / Project Details
                             </label>
                             <textarea
                                 rows={5}
@@ -146,7 +146,7 @@ export default function Contact() {
                                 name="message"
                                 value={formData.message}
                                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                placeholder="Describe your mission — security audit, development project, or collaboration..."
+                                placeholder="Describe your project goals, timeline, and collaboration needs..."
                                 required
                                 className="w-full bg-[rgba(255,0,64,0.03)] border border-[var(--border-subtle)] focus:border-[rgba(255,0,64,0.4)] rounded-xl px-5 py-4 text-lg font-medium text-[var(--text-primary)] outline-none transition-all duration-500 placeholder:text-[var(--text-muted)] resize-none"
                                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -169,14 +169,14 @@ export default function Contact() {
                                     <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}>
                                         <Send className="w-4 h-4" />
                                     </motion.div>
-                                    Encrypting...
+                                    Sending...
                                 </>
                             ) : submitStatus === 'success' ? (
-                                <><CheckCircle2 className="w-4 h-4" /> Transmitted!</>
+                                <><CheckCircle2 className="w-4 h-4" /> Sent!</>
                             ) : submitStatus === 'error' ? (
                                 <><XCircle className="w-4 h-4" /> Failed</>
                             ) : (
-                                <><Send className="w-4 h-4" /> Transmit Securely</>
+                                <><Send className="w-4 h-4" /> Send Message</>
                             )}
                         </motion.button>
                     </form>
@@ -187,7 +187,7 @@ export default function Contact() {
                             animate={{ opacity: 1, y: 0 }}
                             className="mt-8 p-6 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl"
                         >
-                            <p className="font-mono text-sm text-emerald-400">✓ Message encrypted & transmitted. Expect a response within 24hrs.</p>
+                            <p className="font-mono text-sm text-emerald-400">✓ Message sent successfully. Expect a response within 24hrs.</p>
                         </motion.div>
                     )}
                     {submitStatus === 'error' && (
@@ -196,7 +196,7 @@ export default function Contact() {
                             animate={{ opacity: 1, y: 0 }}
                             className="mt-8 p-6 bg-red-500/10 border border-red-500/20 rounded-2xl"
                         >
-                            <p className="font-mono text-sm text-red-400">✗ Secure channel error. Fallback to direct email.</p>
+                            <p className="font-mono text-sm text-red-400">✗ Message failed. Please try again or use direct email.</p>
                         </motion.div>
                     )}
                 </div>
@@ -212,29 +212,29 @@ export default function Contact() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
                         <div className="glass-card rounded-2xl p-5 flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-[rgba(255,0,64,0.08)] flex items-center justify-center flex-shrink-0">
-                                <Lock className="w-5 h-5 text-[#ff0040]" />
+                                <Mail className="w-5 h-5 text-[#ff0040]" />
                             </div>
                             <div>
-                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Encrypted Email</span>
+                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Email</span>
                                 <span className="text-sm text-[var(--text-primary)]">madhupyadav1809@gmail.com</span>
                             </div>
                         </div>
                         <div className="glass-card rounded-2xl p-5 flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-[rgba(255,0,64,0.08)] flex items-center justify-center flex-shrink-0">
-                                <Shield className="w-5 h-5 text-[#ff0040]" />
+                                <Briefcase className="w-5 h-5 text-[#ff0040]" />
                             </div>
                             <div>
-                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Channel Status</span>
-                                <span className="text-sm text-[#ff0040]">Secure · TLS 1.3</span>
+                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Availability</span>
+                                <span className="text-sm text-[#ff0040]">Open for Projects</span>
                             </div>
                         </div>
                         <div className="glass-card rounded-2xl p-5 flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-[rgba(255,0,64,0.08)] flex items-center justify-center flex-shrink-0">
-                                <Clock className="w-5 h-5 text-[#ff0040]" />
+                                <MapPin className="w-5 h-5 text-[#ff0040]" />
                             </div>
                             <div>
-                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Response Time</span>
-                                <span className="text-sm text-[var(--text-primary)]">Within 24 hours</span>
+                                <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)] block">Location</span>
+                                <span className="text-sm text-[var(--text-primary)]">India (Remote Worldwide)</span>
                             </div>
                         </div>
                     </div>

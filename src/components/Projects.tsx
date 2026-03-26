@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, ArrowUpRight, Star, Shield, Lock } from "lucide-react";
+import { ExternalLink, Github, ArrowUpRight, Star } from "lucide-react";
 import { useState } from "react";
 
 const projects = [
     {
         title: "Astha Library ERP",
-        tag: "ERP · SaaS · Secured",
-        description: "A high-performance administrative ecosystem managing 127+ active members. Built with secure authentication, encrypted data storage, role-based access control, and real-time analytics with audit logging.",
+        tag: "ERP · SaaS",
+        description: "A high-performance administrative ecosystem managing 127+ active members with role-based access control, clean workflows, and real-time analytics.",
         tech: ["Python", "Flask", "PostgreSQL", "React", "JWT Auth"],
         image: "/astha-admin-main.png",
         github: "https://github.com/Madhup7008",
@@ -16,12 +16,12 @@ const projects = [
         accent: "#ff0040",
         number: "01",
         status: "Live",
-        security: "Hardened",
+        impact: "High Impact",
     },
     {
         title: "Portfolio Dashboard",
-        tag: "Web · Security Showcase",
-        description: "A cybersecurity-themed developer showcase built with Next.js and Framer Motion. Featuring matrix code rain, encrypted contact forms, CSP headers, and a terminal-inspired design language.",
+        tag: "Web · Showcase",
+        description: "A developer showcase built with Next.js and Framer Motion, featuring dynamic visuals, rich animations, and a strong modern design language.",
         tech: ["Next.js", "Framer Motion", "TypeScript", "Tailwind CSS"],
         image: "/portfolio-preview.svg",
         github: "https://github.com/Madhup7008",
@@ -29,12 +29,12 @@ const projects = [
         accent: "#ff2d2d",
         number: "02",
         status: "Live",
-        security: "Protected",
+        impact: "Brand Presence",
     },
     {
         title: "Hometech Solutions",
-        tag: "E-Commerce · Secure Platform",
-        description: "A full-scale enterprise e-commerce platform with secure JWT authentication, Redis caching, HTTPS-enforced payment gateway, input sanitization, and rate-limited API endpoints.",
+        tag: "E-Commerce Platform",
+        description: "A full-scale enterprise e-commerce platform with JWT authentication, Redis caching, robust payment flow integration, and optimized API endpoints.",
         tech: ["Next.js", "Express.js", "MongoDB", "Redis", "Razorpay"],
         image: "/hometech-preview.jpeg",
         github: "https://github.com/Madhup7008",
@@ -42,7 +42,7 @@ const projects = [
         accent: "#cc0022",
         number: "03",
         status: "In Progress",
-        security: "Fortified",
+        impact: "Scalable",
     },
 ];
 
@@ -85,13 +85,13 @@ export default function Projects() {
                     transition={{ duration: 0.9, ease: "easeOut" }}
                     className="mb-28 relative"
                 >
-                    <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-[#ff0040] opacity-70 block mb-4">_ops.archive</span>
+                    <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-[#ff0040] opacity-70 block mb-4">_project.gallery</span>
                     <h3 className="font-display text-7xl md:text-[110px] tracking-wide leading-none">
-                        DEPLOYED<span className="text-gradient"> OPS</span>
+                        FEATURED<span className="text-gradient"> PROJECTS</span>
                     </h3>
                     <div className="flex items-center gap-4 mt-4">
                         <div className="h-[1px] w-20 bg-[#ff0040] opacity-50" />
-                        <p className="font-mono text-sm text-[var(--text-muted)] uppercase tracking-[0.3em]">Secure, production-grade systems</p>
+                        <p className="font-mono text-sm text-[var(--text-muted)] uppercase tracking-[0.3em]">Production-grade digital products</p>
                     </div>
                 </motion.div>
 
@@ -134,10 +134,10 @@ export default function Projects() {
                                     <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2">
                                         <span className="font-mono text-6xl font-bold opacity-10 text-white select-none">{project.number}</span>
                                     </div>
-                                    {/* Security indicator */}
+                                    {/* Project impact indicator */}
                                     <div className="absolute bottom-6 left-6 z-20 flex items-center gap-1.5">
-                                        <Shield className="w-3 h-3 text-[#ff0040] opacity-60" />
-                                        <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-[#ff0040] opacity-50">{project.security}</span>
+                                        <Star className="w-3 h-3 text-[#ff0040] opacity-60" />
+                                        <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-[#ff0040] opacity-50">{project.impact}</span>
                                     </div>
                                 </div>
 

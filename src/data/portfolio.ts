@@ -1,10 +1,10 @@
 export const portfolioData = {
   personal: {
     name: "Madhup Kumar Yadav",
-    title: "Security Engineer & Full Stack Developer",
+    title: "Full Stack Developer",
     email: "madhupyadav1809@gmail.com",
     location: "India",
-    bio: "I don't just write code; I fortify digital ecosystems. With a passion for cybersecurity and full stack development, I build secure, high-performance applications and hunt vulnerabilities before they become threats.",
+    bio: "I build fast, reliable digital products with clean architecture and thoughtful user experience. I focus on scalable full stack development that helps teams ship confidently.",
     socials: {
       github: "https://github.com/Madhup7008",
       linkedin: "https://www.linkedin.com/in/madhup-kumar-yadav-641a85270/",
@@ -14,23 +14,23 @@ export const portfolioData = {
   skills: [
     { name: "React / Next.js", category: "Frontend", level: 92 },
     { name: "Python", category: "Backend", level: 88 },
-    { name: "Network Security", category: "Security", level: 82 },
-    { name: "Penetration Testing", category: "Security", level: 78 },
+    { name: "Node.js", category: "Backend", level: 84 },
+    { name: "Express.js", category: "Backend", level: 80 },
     { name: "TypeScript", category: "Language", level: 78 },
     { name: "JavaScript", category: "Language", level: 90 },
     { name: "Flask", category: "Backend", level: 85 },
     { name: "PostgreSQL", category: "Database", level: 80 },
-    { name: "OWASP Top 10", category: "Security", level: 85 },
-    { name: "Linux / Kali", category: "Security", level: 80 },
+    { name: "REST API Design", category: "Architecture", level: 85 },
+    { name: "Linux", category: "DevOps", level: 80 },
     { name: "Tailwind CSS", category: "Frontend", level: 95 },
     { name: "Git / GitHub", category: "Workflow", level: 90 },
-    { name: "Wireshark", category: "Security", level: 72 },
-    { name: "Burp Suite", category: "Security", level: 70 },
+    { name: "Docker", category: "DevOps", level: 72 },
+    { name: "Redis", category: "Database", level: 70 },
   ],
   projects: [
     {
       title: "Astha Library & Fitness ERP",
-      description: "A comprehensive institutional management platform with secure authentication, role-based access control, encrypted data storage, and audit logging — serving 127+ active members.",
+      description: "A comprehensive institutional management platform with role-based access, structured workflows, and audit-ready data insights — serving 127+ active members.",
       tech: ["Python", "Flask", "PostgreSQL", "React", "JWT Auth"],
       link: "https://www.asthalibraryfitness.com/",
       github: "https://github.com/Madhup7008",
@@ -38,7 +38,7 @@ export const portfolioData = {
     },
     {
       title: "Portfolio Dashboard",
-      description: "A cybersecurity-themed developer showcase built with Next.js and Framer Motion featuring matrix code rain, encrypted contact forms, and terminal-inspired design.",
+      description: "A high-impact developer showcase built with Next.js and Framer Motion featuring animated storytelling, responsive design, and a bold modern visual system.",
       tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
       link: "#",
       github: "https://github.com/Madhup7008",
@@ -46,7 +46,7 @@ export const portfolioData = {
     },
     {
       title: "Hometech Solutions",
-      description: "A full-scale e-commerce platform with secure JWT auth, input sanitization, rate-limited APIs, Redis caching, and HTTPS-enforced payment processing.",
+      description: "A full-scale e-commerce platform with JWT auth, Redis caching, optimized APIs, and streamlined payment processing.",
       tech: ["Next.js", "Express.js", "MongoDB", "Redis", "Razorpay"],
       link: "#",
       github: "https://github.com/Madhup7008",

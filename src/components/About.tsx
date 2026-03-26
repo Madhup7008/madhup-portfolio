@@ -1,42 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Code2, Award, Terminal, BookOpen, Cpu, Briefcase, GraduationCap, Shield, Lock, Bug } from "lucide-react";
+import { MapPin, Code2, Award, ArrowRight, Briefcase, GraduationCap, Cpu, Layers } from "lucide-react";
 
 const cards = [
     {
-        tag: "/ Offensive Security",
-        title: "Penetration Testing",
-        body: "Probing systems for vulnerabilities before attackers do. Specialized in web app security, network pentesting, and ethical hacking methodologies.",
-        icon: Bug,
+        tag: "/ Product Engineering",
+        title: "Full Stack Delivery",
+        body: "Building user-focused web products from concept to launch with robust frontend architecture and reliable backend systems.",
+        icon: Layers,
     },
     {
         tag: "/ Engineering",
-        title: "Secure Development",
-        body: "Building production-grade applications with security baked in from day one. OWASP-compliant code, hardened APIs, and zero-trust architectures.",
+        title: "Scalable Development",
+        body: "Creating production-ready applications with maintainable code, performance-focused design, and clear system structure.",
         icon: Code2,
     },
     {
-        tag: "/ Defense",
-        title: "Threat Analysis",
-        body: "Monitoring, detecting, and analyzing potential security threats. From log analysis to incident response — keeping systems battle-ready.",
-        icon: Shield,
+        tag: "/ Systems",
+        title: "Backend Architecture",
+        body: "Designing APIs, data flows, and infrastructure that stay stable as traffic and feature complexity grow.",
+        icon: Cpu,
     },
 ];
 
 const timeline = [
     {
         year: "2024 – Present",
-        title: "Security Engineer & Full Stack Developer",
+        title: "Full Stack Developer",
         org: "Freelance & Open Source",
-        description: "Building secure production web apps with Next.js, Flask, and PostgreSQL. Conducting security audits and penetration testing for clients.",
+        description: "Building production web apps with Next.js, Flask, and PostgreSQL for businesses and independent clients.",
         icon: Briefcase,
     },
     {
         year: "2023 – Present",
         title: "B.Tech in Information Technology",
         org: "Amity University, Noida",
-        description: "Studying cybersecurity, network security, cryptography, and modern software engineering practices. Active in CTF competitions and security research.",
+        description: "Studying software engineering, data systems, cloud fundamentals, and modern product development practices.",
         icon: GraduationCap,
     },
 ];
@@ -57,17 +57,17 @@ export default function About() {
                     transition={{ duration: 0.9, ease: "easeOut" }}
                     className="mb-24 relative"
                 >
-                    <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-[#ff0040] opacity-70 block mb-4">_identity.scan</span>
+                    <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-[#ff0040] opacity-70 block mb-4">_about.section</span>
                     <h2 className="font-display text-7xl md:text-[200px] tracking-wide leading-none select-none opacity-10 absolute -top-10 -left-8">
                         ABOUT
                     </h2>
                     <div className="relative z-10 pt-4">
                         <h3 className="font-display text-6xl md:text-[110px] tracking-wide leading-none">
-                            THE<span className="text-gradient"> OPERATOR</span>
+                            THE<span className="text-gradient"> BUILDER</span>
                         </h3>
                         <div className="flex items-center gap-4 mt-5">
                             <div className="h-[1px] w-20 bg-[#ff0040] opacity-50" />
-                            <p className="font-mono text-sm text-[var(--text-muted)] uppercase tracking-[0.3em]">Building & Breaking Systems</p>
+                            <p className="font-mono text-sm text-[var(--text-muted)] uppercase tracking-[0.3em]">Building Digital Products</p>
                         </div>
                     </div>
                 </motion.div>
@@ -103,7 +103,7 @@ export default function About() {
                                     className="absolute bottom-6 left-6 right-6 p-5 bg-[rgba(5,5,5,0.85)] backdrop-blur-2xl border border-[var(--border-subtle)] rounded-2xl"
                                 >
                                     <h4 className="text-base font-bold text-[var(--text-primary)] mb-1">Madhup Kumar Yadav</h4>
-                                    <p className="font-mono text-[10px] text-[#ff0040] uppercase tracking-widest mb-3 opacity-80">Security Engineer & Developer</p>
+                                    <p className="font-mono text-[10px] text-[#ff0040] uppercase tracking-widest mb-3 opacity-80">Full Stack Developer</p>
                                     <div className="flex items-center gap-1.5">
                                         <MapPin className="w-3 h-3 text-[var(--text-muted)]" />
                                         <span className="font-mono text-[10px] text-[var(--text-muted)] tracking-wider">India · UTC+5:30</span>
@@ -133,11 +133,11 @@ export default function About() {
                                 </div>
                                 <p className="text-xl md:text-2xl text-[var(--text-secondary)] leading-relaxed font-normal">
                                     Pursuing <span className="text-[var(--text-primary)] font-semibold">B.Tech in IT</span> at Amity University, Noida. I operate at the intersection of
-                                    <span className="text-[#ff0040] font-semibold"> building</span> and{" "}
-                                    <span className="text-[#ff2d2d] font-semibold">breaking</span> — crafting secure software while hunting vulnerabilities that others miss.
+                                    <span className="text-[#ff0040] font-semibold"> product thinking</span> and{" "}
+                                    <span className="text-[#ff2d2d] font-semibold">engineering execution</span> to ship reliable, high-performing software.
                                 </p>
                                 <div className="mt-8 flex flex-wrap gap-3">
-                                    {["Python", "React", "Next.js", "Kali Linux", "Burp Suite", "Wireshark", "OWASP", "Nmap"].map((t) => (
+                                    {["Python", "React", "Next.js", "TypeScript", "Flask", "PostgreSQL", "Docker", "Redis"].map((t) => (
                                         <span key={t} className="font-mono text-[10px] px-3 py-1.5 rounded-lg border border-[var(--border-subtle)] text-[var(--text-muted)] tracking-wider uppercase hover:border-[#ff0040] hover:text-[#ff0040] transition-colors">
                                             {t}
                                         </span>
@@ -184,7 +184,7 @@ export default function About() {
                                 rel="noopener noreferrer"
                                 className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-xl text-sm"
                             >
-                                <Terminal className="w-4 h-4" />
+                                <ArrowRight className="w-4 h-4" />
                                 Connect on LinkedIn
                             </a>
                             <a
@@ -207,7 +207,7 @@ export default function About() {
                     transition={{ duration: 0.9, ease: "easeOut" }}
                     className="mt-24"
                 >
-                    <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-[#ff0040] opacity-70 block mb-8">_ops.timeline</span>
+                    <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-[#ff0040] opacity-70 block mb-8">_career.timeline</span>
                     <div className="relative">
                         {/* Vertical line */}
                         <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#ff0040] via-[rgba(255,0,64,0.3)] to-transparent hidden md:block" />

@@ -95,7 +95,7 @@ function ParticleField() {
     );
 }
 
-/* ─── Wireframe Globe (Hacker Network Visualization) ────────────────── */
+/* ─── Wireframe Globe (Network Visualization) ────────────────── */
 function WireframeGlobe() {
     const globeRef = useRef<THREE.Mesh>(null!);
     const ringRef1 = useRef<THREE.Mesh>(null!);

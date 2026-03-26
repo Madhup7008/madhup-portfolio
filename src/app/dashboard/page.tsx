@@ -6,7 +6,7 @@ import Link from "next/link";
 import {
     Activity, ArrowUpRight, BarChart3, Clock, Code2,
     Cpu, Database, Github, Globe2, LayoutDashboard,
-    MessagesSquare, Server, Terminal, Users, Zap,
+    MessagesSquare, Server, Users, Zap,
     ChevronRight, BellRing
 } from "lucide-react";
 import CustomCursor from "@/components/CustomCursor";
@@ -89,8 +89,8 @@ export default function Dashboard() {
                         </div>
 
                         <div className="flex items-center gap-4 px-4 py-3 hover:bg-white/[0.02] border border-transparent rounded-2xl text-white/50 hover:text-white group cursor-pointer transition-all">
-                            <Terminal className="w-5 h-5 group-hover:text-white transition-colors" />
-                            <span className="hidden md:block font-bold text-sm">Console</span>
+                            <Code2 className="w-5 h-5 group-hover:text-white transition-colors" />
+                            <span className="hidden md:block font-bold text-sm">Development</span>
                         </div>
 
                         <div className="flex items-center gap-4 px-4 py-3 hover:bg-white/[0.02] border border-transparent rounded-2xl text-white/50 hover:text-white group cursor-pointer transition-all">

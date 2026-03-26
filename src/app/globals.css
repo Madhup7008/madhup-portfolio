@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 /* =====================================================
-   DARK HACKER THEME — Blood Red × Obsidian Black
-   ===================================================== */
+  DARK MODERN THEME — Blood Red × Obsidian Black
+  ===================================================== */
 
 :root {
   /* Core palette — pure black depths */
@@ -31,7 +31,7 @@
   --border-medium: rgba(255, 0, 64, 0.18);
   --border-strong: rgba(255, 0, 64, 0.4);
 
-  /* Security accent */
+  /* Accent tones */
   --accent-danger: #ff0040;
   --accent-danger-glow: rgba(255, 0, 64, 0.15);
   --accent-warning: #ff4444;
@@ -149,7 +149,7 @@ body::after {
   z-index: 9998;
 }
 
-/* Scanning line overlay — enhanced hacker aesthetic */
+/* Scanning line overlay */
 body::before {
   content: "";
   position: fixed;
@@ -313,8 +313,8 @@ body::before {
 }
 
 /* =====================================================
-   TERMINAL TAG
-   ===================================================== */
+  MONOSPACE TAG
+  ===================================================== */
 
 .tag-mono {
   font-family: 'JetBrains Mono', monospace;
@@ -462,7 +462,7 @@ body::before {
   100% { transform: translateY(100vh); }
 }
 
-@keyframes terminal-blink {
+@keyframes caret-blink {
   0%, 49% { border-color: var(--accent-primary); }
   50%, 100% { border-color: transparent; }
 }
@@ -496,13 +496,13 @@ body::before {
   text-shadow: 2px 0 #ff2d2d;
 }
 
-/* Security status indicator */
-.cyber-badge {
+/* Status indicator */
+.status-badge {
   position: relative;
   overflow: hidden;
 }
 
-.cyber-badge::after {
+.status-badge::after {
   content: '';
   position: absolute;
   top: 0;
@@ -539,10 +539,10 @@ body::before {
   100% { transform: translateX(100%); }
 }
 
-/* Terminal cursor */
-.terminal-cursor {
+/* Typing cursor */
+.typing-cursor {
   border-right: 2px solid var(--accent-primary);
-  animation: terminal-blink 1s step-end infinite;
+  animation: caret-blink 1s step-end infinite;
   padding-right: 2px;
 }
 

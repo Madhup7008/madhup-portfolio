@@ -6,7 +6,7 @@ import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import CustomCursor from "@/components/CustomCursor";
 import Link from "next/link";
-import { ArrowRight, Terminal, Github, Linkedin, Mail, Heart, Shield } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Shield } from "lucide-react";
 
 function SectionCTA({ href, label }: { href: string; label: string }) {
   return (
@@ -42,15 +42,15 @@ export default function Home() {
 
       <SectionDivider />
       <About />
-      <SectionCTA href="/about" label="→ Full Dossier" />
+      <SectionCTA href="/about" label="→ Read Full Story" />
 
       <SectionDivider />
       <Projects />
-      <SectionCTA href="/builds" label="→ View All Operations" />
+      <SectionCTA href="/builds" label="→ View All Projects" />
 
       <SectionDivider />
       <Skills />
-      <SectionCTA href="/learn" label="→ View Arsenal Logs" />
+      <SectionCTA href="/learn" label="→ Explore Skills & Learning" />
 
       <SectionDivider />
       <Contact />
@@ -63,10 +63,10 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <Shield className="w-4 h-4 text-[#ff0040]" />
-                <span className="font-mono text-sm font-bold text-[var(--text-primary)] tracking-wider">MKY<span className="text-[#ff0040]">.</span><span className="text-[10px] text-[var(--text-muted)] tracking-[0.2em] ml-1">SEC</span></span>
+                <span className="font-mono text-sm font-bold text-[var(--text-primary)] tracking-wider">MKY<span className="text-[#ff0040]">.</span><span className="text-[10px] text-[var(--text-muted)] tracking-[0.2em] ml-1">DEV</span></span>
               </div>
               <p className="text-sm text-[var(--text-secondary)] max-w-sm leading-relaxed">
-                Security Engineer & Full Stack Developer based in India. Building secure systems and hunting vulnerabilities.
+                Full Stack Developer based in India. Building scalable web products with thoughtful design and clean engineering.
               </p>
             </div>
 

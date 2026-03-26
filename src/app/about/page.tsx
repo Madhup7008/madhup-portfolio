@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/CustomCursor";
 import Contact from "@/components/Contact";
 import { motion } from "framer-motion";
-import { MapPin, Award, Terminal, Code2, Globe2 } from "lucide-react";
+import { MapPin, Award, Code2, Globe2 } from "lucide-react";
 
 export default function AboutPage() {
     return (
@@ -108,7 +108,7 @@ export default function AboutPage() {
 
                             {/* Core Philosophy Banner */}
                             <div className="mt-10 p-10 bg-white text-black rounded-[40px] shadow-[0_30px_60px_rgba(255,255,255,0.1)] hover:scale-[1.02] transition-transform duration-500">
-                                <Terminal className="w-10 h-10 mb-6" />
+                                <Globe2 className="w-10 h-10 mb-6" />
                                 <h4 className="text-3xl font-black mb-4 uppercase tracking-tighter">"Simplicity is the ultimate sophistication."</h4>
                                 <p className="text-lg font-bold opacity-80">- My approach to building architectures.</p>
                             </div>
