@@ -108,9 +108,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-blue-dev.png?v=20260326" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-blue-dev.png?v=20260326" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-blue-dev.png?v=20260326" />
+        <link rel="icon" href="/madhup-force-icon.png?v=1000" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
